@@ -30,7 +30,18 @@ function createProject() {
     window.localStorage.removeItem('Projects List');
     window.localStorage.setItem('Projects List', JSON.stringify(arr));
   }
-  fetchProjects();
+  updateProjectsList(project);
+}
+
+function updateProjectsList(project) {
+  let ul = document.getElementById('projList');
+    let li = document.createElement('li');
+    li.appendChild(
+      document.createTextNode(
+        `${project.name} - ${project.description} - Tasks: ${project.tasks.length} - ${project.priority} - ${project.dueDate}`,
+      ),
+    );
+    ul.appendChild(li);
 }
 
 function fetchProjects() {
