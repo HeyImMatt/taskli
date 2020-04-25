@@ -11,6 +11,8 @@ function toggleForm() {
 }
 
 function createProject() {
+  let storedProjs = JSON.parse(window.localStorage.getItem('Projects List'));
+  console.log(storedProjs);
   let project = new Project(
     document.getElementById('projName').value,
     false,
@@ -20,47 +22,35 @@ function createProject() {
     document.getElementById('projPriority').value,
     document.getElementById('projStatus').value,
   );
-  if (localStorage.getItem('Projects List') === null) {
-    //projectsList.push(project);
-    window.localStorage.setItem('Projects List', JSON.stringify(project));
-    fetchProjects();
+  if (storedProjs === null) {
+    window.localStorage.setItem('Projects List', JSON.stringify([project]));
   } else {
-    let localProjs = [JSON.parse(localStorage.getItem('Projects List'))];
-    // projectsList.push(localProjs);
-    localProjs.push(project);
-    window.localStorage.setItem('Projects List', JSON.stringify(localProjs));
-    fetchProjects();
-    console.log(localProjs);
+    let arr = [...storedProjs, project];
+    console.log(arr);
+    window.localStorage.removeItem('Projects List');
+    window.localStorage.setItem('Projects List', JSON.stringify(arr));
   }
-  //let localProjects = window.localStorage.getItem('Projects List');
-  
-  // let ul = document.getElementById('projList');
-  // let li = document.createElement('li')
-  // li.appendChild(document.createTextNode(`${project.name} - ${project.description} - ${project.dueDate} - ${project.priority}`));
-  // ul.appendChild(li)
+  fetchProjects();
 }
 
 function fetchProjects() {
-  let projects = JSON.parse(localStorage.getItem('Projects List'));
-  let ul = document.getElementById('projList');
-  let li = document.createElement('li');
-  console.log(projects);
-  for (let i = 0; i < projects.length; i++) {
-    let name = projects[i].name;
-    let description = projects[i].description;
-    let dueDate = projects[i].dueDate;
-    let priority = projects[i].priority;
-    //let tasks = projects[i].tasks.length; - Tasks: ${tasks}
-    li.appendChild(
-      document.createTextNode(
-        `${name} - ${description} - ${dueDate} - ${priority}`,
-      ),
-    );
-    ul.appendChild(li);
+  let projects = JSON.parse(window.localStorage.getItem('Projects List'));
+  if (projects !== null) {
+    let ul = document.getElementById('projList');
+    let li = document.createElement('li');
+    projects.forEach((project) => {
+      //let tasks = project[i].tasks.length; - Tasks: ${tasks}
+      li.appendChild(
+        document.createTextNode(
+          `${project.name} - ${project.description} - ${project.dueDate} - ${project.priority}`,
+        ),
+      );
+      ul.appendChild(li);
+    });
   }
 }
 
 newProjBtn.addEventListener('click', toggleForm);
 projCreateBtn.addEventListener('click', createProject);
 projCreateBtn.addEventListener('click', toggleForm);
-window.onload = fetchProjects()
+window.onload = fetchProjects();
