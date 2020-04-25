@@ -14,9 +14,10 @@
 <body>
   <h1>Taskli</h1>
   <h2>Helping you get sh*t done</h2>
-  <!-- <button id="newProjBtn">Add New Project</button> -->
+  <button id="newProjBtn">Add New Project</button>
   <br>
-  <form id="newProjForm">
+  <br>
+  <form id="newProjForm" style="display: none">
     <label for="projName">Project Name</label><br>
     <input type="text" id="projName"><br>
     <label for="projDescription">Project Description</label><br>
@@ -40,8 +41,10 @@
       <option>Done</option>
     </select>
     <br>
-    <button type="reset" id="projCreateBtn">Send It</button>
+    <br>
+    <button type="reset" id="projCreateBtn">Create</button>
   </form>
-  <div id="projectList">
+  <div id="projContainer">
+    <ul id="projList">Projects<br><br></ul>
   </div>
 </body>
