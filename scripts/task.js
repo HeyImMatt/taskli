@@ -1,6 +1,25 @@
-const projectsList = [];
+//const projectsList = [];
+
+function createUidV2() {
+  let uid = Date.now();
+  if (uid <= this.previous) {
+    uid = ++this.previous;
+  } else {
+    this.previous = uid;
+  }
+  return uid;
+}
 
 class ObjectHandler {
+  #uid
+  constructor(
+    name,
+    isComplete = false
+  ) {
+    this.#uid = createUidV2();
+    this.name = name;
+    this.isComplete = isComplete;
+  }
   createUid() {
     let uid = Date.now();
     if (uid <= this.createUid.previous) {
@@ -29,88 +48,101 @@ class ObjectHandler {
 }
 
 class Project extends ObjectHandler {
-  #uid;
   constructor(
     name,
+    isComplete,
     description,
     notes,
     tasks,
     dueDate,
     priority,
     status,
-    isComplete,
   ) {
-    super();
-    this.#uid = super.createUid();
-    this.name = name;
+    super(...arguments);
     this.description = description;
     this.notes = notes;
-    this.tasks = [tasks];
+    this.tasks = [];
     this.dueDate = dueDate;
     this.priority = priority;
     this.status = status;
-    this.isComplete = isComplete;
   }
+
+  createTask() {
+    let task = new Task(...arguments);
+    this.tasks.push(task)
+    console.log(this.tasks);
+  }
+
 }
 
 class Task extends ObjectHandler {
-  #uid
   constructor(
     name,
+    isComplete,
     description,
     notes,
     checklistItems,
     dueDate,
     priority,
     status,
-    isComplete,
   ) {
-    super();
-    this.#uid = super.createUid();
-    this.name = name;
+    super(...arguments);
     this.description = description;
     this.notes = notes;
-    this.checklistItems = [checklistItems]
+    this.checklistItems = []
     this.dueDate = dueDate;
     this.priority = priority;
     this.status = status;
-    this.isComplete = isComplete;
   }
+
+  createCheckListItem() {
+    let item = new ChecklistItem(...arguments);
+    this.checklistItems.push(item)
+    console.log(this.checklistItems);
+  }
+
 }
 
 class ChecklistItem extends ObjectHandler {
-  #uid;
   constructor(name, isComplete) {
-    super();
-    this.#uid = super.createUid();
-    this.name = name;
-    this.isComplete = isComplete;
+    super(...arguments);
   }
 }
 
 const p1 = new Project(
-  'Test Project',
+  'Project Name',
+  false,
   'Some Description',
   'Some Notes',
   '',
   '',
   '',
   'Backlog',
-  false,
 );
 const t1 = new Task(
-  'Test Task',
+  'Task Name',
+  false,
   'Task Description',
   'Task notes',
+  null,
   '',
   '',
-  '',
-  false,
   '',
 );
 const ci1 = new ChecklistItem('Test Checklist Item', false);
 const ci2 = new ChecklistItem('Second Checklist Item', true);
-t1.checklistItems.push(ci1)
+//t1.checklistItems.push(ci1)
 console.log(p1, t1, ci1, ci2);
 
 
+// projects have tasks - composition
+// - who controls the creation?
+//    - project or app?
+//    - can tasks be reassigned?
+// - are tasks aware of their project?
+// - can tasks exist without a project?
+
+// assuming project creates its own:
+//    project.createTask(data) {
+//        this.tasks.push(new Task(data));
+//    }
