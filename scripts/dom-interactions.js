@@ -37,12 +37,11 @@ function fetchProjects() {
   let projects = JSON.parse(window.localStorage.getItem('Projects List'));
   if (projects !== null) {
     let ul = document.getElementById('projList');
-    let li = document.createElement('li');
     projects.forEach((project) => {
-      //let tasks = project[i].tasks.length; - Tasks: ${tasks}
+      let li = document.createElement('li');
       li.appendChild(
         document.createTextNode(
-          `${project.name} - ${project.description} - ${project.dueDate} - ${project.priority}`,
+          `${project.name} - ${project.description} - Tasks: ${project.tasks.length} - ${project.priority} - ${project.dueDate}`,
         ),
       );
       ul.appendChild(li);
