@@ -1,10 +1,15 @@
 const taskCreateBtn = document.getElementById('taskCreateBtn');
 const taskForm = document.getElementById('newTaskForm');
 const newTaskBtn = document.getElementById('newTaskBtn');
-let currentProjName;
+let currentProjId;
 
 function getCurrentProj() {
-  currentProjName = JSON.parse(window.localStorage.getItem('currentProjName'));
+  currentProjId = JSON.parse(window.localStorage.getItem('currentProjId'));
+  let storedProjs = JSON.parse(window.localStorage.getItem('Projects List'));
+  let i = storedProjs.findIndex((el) => el.uid == currentProjId);
+  let projName = storedProjs[i].name;
+  let projTitle = document.getElementById('currentProj');
+  projTitle.innerHTML = projName;
 }
 
 function toggleTaskForm() {
@@ -17,7 +22,7 @@ function toggleTaskForm() {
 
 function createTask() {
   let storedProjs = JSON.parse(window.localStorage.getItem('Projects List'));
-  let i = storedProjs.findIndex((el) => el.name === currentProjName);
+  let i = storedProjs.findIndex((el) => el.uid == currentProjId);
   let taskListArr = storedProjs[i].tasks;
   let task = new Task(
     document.getElementById('taskName').value,
@@ -47,7 +52,7 @@ function updateTasksList(task) {
 
 function fetchTasks() {
   let storedProjs = JSON.parse(window.localStorage.getItem('Projects List'));
-  let i = storedProjs.findIndex((el) => el.name === currentProjName);
+  let i = storedProjs.findIndex((el) => el.uid == currentProjId);
   let taskListArr = storedProjs[i].tasks;
   let ul = document.getElementById('taskList');
   taskListArr.forEach((task) => {

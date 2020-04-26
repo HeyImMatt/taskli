@@ -1,6 +1,4 @@
-//const projectsList = [];
-
-function createUidV2() {
+function createUid() {
   let uid = Date.now();
   if (uid <= this.previous) {
     uid = ++this.previous;
@@ -11,41 +9,15 @@ function createUidV2() {
 }
 
 class ObjectHandler {
-  #uid
+  uid
   constructor(
     name,
     isComplete = false
   ) {
-    this.#uid = createUidV2();
+    this.uid = createUid();
     this.name = name;
     this.isComplete = isComplete;
   }
-  createUid() {
-    let uid = Date.now();
-    if (uid <= this.createUid.previous) {
-      uid = ++this.createUid.previous;
-    } else {
-      this.createUid.previous = uid;
-    }
-    return uid;
-    
-  }
-  // Want to add code to do DOM rendering here
-
-  //   createRootElement(tag, cssClasses, attributes) {
-//     const rootElement = document.createElement(tag);
-//     if (cssClasses) {
-//         rootElement.className = cssClasses;
-//     }
-//     if (attributes && attributes.length > 0) {
-//         for (const attr of attributes) {
-//             rootElement.setAttribute(attr.name, attr.value);
-//         }
-//     }
-//     document.getElementById(this.hookId).append(rootElement);
-//     return rootElement;
-// }
-
 }
 
 class Project extends ObjectHandler {
