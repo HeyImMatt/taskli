@@ -109,32 +109,6 @@ class ChecklistItem extends ObjectHandler {
   }
 }
 
-const p1 = new Project(
-  'Project Name',
-  false,
-  'Some Description',
-  'Some Notes',
-  '',
-  '',
-  '',
-  'Backlog',
-);
-const t1 = new Task(
-  'Task Name',
-  false,
-  'Task Description',
-  'Task notes',
-  null,
-  '',
-  '',
-  '',
-);
-const ci1 = new ChecklistItem('Test Checklist Item', false);
-const ci2 = new ChecklistItem('Second Checklist Item', true);
-//t1.checklistItems.push(ci1)
-console.log(p1, t1, ci1, ci2);
-
-
 // projects have tasks - composition
 // - who controls the creation?
 //    - project or app?
