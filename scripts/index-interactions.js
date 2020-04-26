@@ -1,11 +1,11 @@
 const projForm = document.getElementById('newProjForm');
 const newProjBtn = document.getElementById('newProjBtn');
 const projCreateBtn = document.getElementById('projCreateBtn');
-let currentProjName;
+let currentProjId;
 
 function getProjName(id) {
-  currentProjName = id;
-  window.localStorage.setItem('currentProjName', JSON.stringify(currentProjName));
+  currentProjId = id;
+  window.localStorage.setItem('currentProjId', JSON.stringify(currentProjId));
 }
 
 function toggleForm() {
@@ -43,7 +43,7 @@ function updateProjectsList(project) {
   let ul = document.getElementById('projList');
   let li = document.createElement('li');
   li.innerHTML = `
-  <a href="project.html" id="${project.name}" onclick="getProjName(this.id)">${project.name} - ${project.description} - Tasks: ${project.tasks.length} - ${project.priority} - ${project.dueDate}</a>`;
+  <a href="project.html" id="${project.uid}" onclick="getProjName(this.id)">${project.name} - ${project.description} - Tasks: ${project.tasks.length} - ${project.priority} - ${project.dueDate}</a>`;
   ul.appendChild(li);
 }
 
@@ -54,7 +54,7 @@ function fetchProjects() {
     projects.forEach((project) => {
       let li = document.createElement('li');
       li.innerHTML = `
-      <a href="project.html" id="${project.name}" onclick="getProjName(this.id)">${project.name} - ${project.description} - Tasks: ${project.tasks.length} - ${project.priority} - ${project.dueDate}</a>`;
+      <a href="project.html" id="${project.uid}" onclick="getProjName(this.id)">${project.name} - ${project.description} - Tasks: ${project.tasks.length} - ${project.priority} - ${project.dueDate}</a>`;
       ul.appendChild(li);
     });
   }
