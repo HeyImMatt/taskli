@@ -28,6 +28,7 @@ class ObjectHandler {
       this.createUid.previous = uid;
     }
     return uid;
+    
   }
   // Want to add code to do DOM rendering here
 
