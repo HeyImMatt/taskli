@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>Taskli</title>
+  <link rel="stylesheet" href="styles/main.css" />
+  <script src="scripts/task.js" defer></script>
+  <script src="scripts/project-interactions.js" defer></script>
+</head>
+
+<body>
+  <h1>Taskli</h1>
+  <h2>Helping you get sh*t done</h2>
+  <a href="index.html">Back to Projects List</a>
+  <h4><span id="currentProj">Project 8</span></h4>
+  <button id="newTaskBtn">Add New Task</button>
+  <br>
+  <br>
+  <form id="newTaskForm" style="display: none">
+    <label for="taskName">Task Name</label><br>
+    <input type="text" id="taskName"><br>
+    <label for="taskDescription">Task Description</label><br>
+    <textarea id="taskDescription"></textarea><br>
+    <label for="taskNotes">Task Notes</label><br>
+    <textarea id="taskNotes"></textarea><br>
+    <label for="taskDueDate">Due Date</label>
+    <input type="date" id="taskDueDate"><br>
+    <label for="taskPriority">Priority</label>
+    <select id="taskPriority">
+      <option>Urgent</option>
+      <option>High</option>
+      <option>Medium</option>
+      <option>Low</option>
+    </select><br>
+    <label for="taskStatus">Status</label>
+    <select id="taskStatus">
+      <option>Backlog</option>
+      <option>In Progress</option>
+      <option>On Hold</option>
+      <option>Done</option>
+    </select>
+    <br>
+    <br>
+    <button type="reset" id="taskCreateBtn">Create</button>
+  </form>
+  <div id="taskContainer">
+    <ul id="taskList">Tasks<br><br></ul>
+  </div>
+</body>
