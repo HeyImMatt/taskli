@@ -1,6 +1,11 @@
 const taskCreateBtn = document.getElementById('taskCreateBtn');
 const taskForm = document.getElementById('newTaskForm');
 const newTaskBtn = document.getElementById('newTaskBtn');
+let currentProjName;
+
+function getCurrentProj() {
+  currentProjName = JSON.parse(window.localStorage.getItem('currentProjName'));
+}
 
 function toggleTaskForm() {
   if (taskForm.style.display === 'none') {
@@ -12,7 +17,7 @@ function toggleTaskForm() {
 
 function createTask() {
   let storedProjs = JSON.parse(window.localStorage.getItem('Projects List'));
-  let i = storedProjs.findIndex((el) => el.name === 'Project 8');
+  let i = storedProjs.findIndex((el) => el.name === currentProjName);
   let taskListArr = storedProjs[i].tasks;
   let task = new Task(
     document.getElementById('taskName').value,
@@ -24,7 +29,6 @@ function createTask() {
     document.getElementById('taskStatus').value,
   );
   taskListArr.push(task);
-  console.log(storedProjs);
   window.localStorage.removeItem('Projects List');
   window.localStorage.setItem('Projects List', JSON.stringify(storedProjs));
   updateTasksList(task);
@@ -43,7 +47,7 @@ function updateTasksList(task) {
 
 function fetchTasks() {
   let storedProjs = JSON.parse(window.localStorage.getItem('Projects List'));
-  let i = storedProjs.findIndex((el) => el.name === 'Project 8');
+  let i = storedProjs.findIndex((el) => el.name === currentProjName);
   let taskListArr = storedProjs[i].tasks;
   let ul = document.getElementById('taskList');
   taskListArr.forEach((task) => {
@@ -61,4 +65,5 @@ newTaskBtn.addEventListener('click', toggleTaskForm);
 taskCreateBtn.addEventListener('click', createTask);
 taskCreateBtn.addEventListener('click', toggleTaskForm);
 
+window.onload = getCurrentProj();
 window.onload = fetchTasks();

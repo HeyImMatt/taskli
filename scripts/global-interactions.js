@@ -1,1 +1,0 @@
-// how do i get a global variable stored for current project?

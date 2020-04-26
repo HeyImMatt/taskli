@@ -5,7 +5,7 @@ let currentProjName;
 
 function getProjName(id) {
   currentProjName = id;
-  console.log(currentProjName);
+  window.localStorage.setItem('currentProjName', JSON.stringify(currentProjName));
 }
 
 function toggleForm() {
