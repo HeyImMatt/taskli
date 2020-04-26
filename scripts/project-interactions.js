@@ -1,11 +1,6 @@
 const taskCreateBtn = document.getElementById('taskCreateBtn');
 const taskForm = document.getElementById('newTaskForm');
 const newTaskBtn = document.getElementById('newTaskBtn');
-let currentProjName;
-
-function getProjName() {
-  currentProjName = document.getElementById('currentProj').textContent;
-}
 
 function toggleTaskForm() {
   if (taskForm.style.display === 'none') {
@@ -17,7 +12,7 @@ function toggleTaskForm() {
 
 function createTask() {
   let storedProjs = JSON.parse(window.localStorage.getItem('Projects List'));
-  let i = storedProjs.findIndex((el) => el.name === currentProjName);
+  let i = storedProjs.findIndex((el) => el.name === 'Project 8');
   let taskListArr = storedProjs[i].tasks;
   let task = new Task(
     document.getElementById('taskName').value,
@@ -48,8 +43,7 @@ function updateTasksList(task) {
 
 function fetchTasks() {
   let storedProjs = JSON.parse(window.localStorage.getItem('Projects List'));
-  let currentProjName = 'Project 8';
-  let i = storedProjs.findIndex((el) => el.name === currentProjName);
+  let i = storedProjs.findIndex((el) => el.name === 'Project 8');
   let taskListArr = storedProjs[i].tasks;
   let ul = document.getElementById('taskList');
   taskListArr.forEach((task) => {
@@ -67,5 +61,4 @@ newTaskBtn.addEventListener('click', toggleTaskForm);
 taskCreateBtn.addEventListener('click', createTask);
 taskCreateBtn.addEventListener('click', toggleTaskForm);
 
-window.onload = getProjName();
 window.onload = fetchTasks();
