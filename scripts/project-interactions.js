@@ -1,15 +1,22 @@
 const taskCreateBtn = document.getElementById('taskCreateBtn');
 const taskForm = document.getElementById('newTaskForm');
 const newTaskBtn = document.getElementById('newTaskBtn');
+let storedProjs;
 let currentProjId;
+let currentProj;
+let taskListArr;
 
-function getCurrentProj() {
+function setCurrentProj() {
   currentProjId = JSON.parse(window.localStorage.getItem('currentProjId'));
-  let storedProjs = JSON.parse(window.localStorage.getItem('Projects List'));
+  storedProjs = JSON.parse(window.localStorage.getItem('Projects List'));
   let i = storedProjs.findIndex((el) => el.uid == currentProjId);
-  let projName = storedProjs[i].name;
+  currentProj = storedProjs[i];
+  taskListArr = currentProj.tasks;
+}
+
+function setProjectPage(){
   let projTitle = document.getElementById('currentProj');
-  projTitle.innerHTML = projName;
+  projTitle.innerHTML = currentProj.name;
 }
 
 function toggleTaskForm() {
@@ -21,9 +28,6 @@ function toggleTaskForm() {
 }
 
 function createTask() {
-  let storedProjs = JSON.parse(window.localStorage.getItem('Projects List'));
-  let i = storedProjs.findIndex((el) => el.uid == currentProjId);
-  let taskListArr = storedProjs[i].tasks;
   let task = new Task(
     document.getElementById('taskName').value,
     false,
@@ -51,9 +55,6 @@ function updateTasksList(task) {
 }
 
 function fetchTasks() {
-  let storedProjs = JSON.parse(window.localStorage.getItem('Projects List'));
-  let i = storedProjs.findIndex((el) => el.uid == currentProjId);
-  let taskListArr = storedProjs[i].tasks;
   let ul = document.getElementById('taskList');
   taskListArr.forEach((task) => {
     let li = document.createElement('li');
@@ -70,5 +71,6 @@ newTaskBtn.addEventListener('click', toggleTaskForm);
 taskCreateBtn.addEventListener('click', createTask);
 taskCreateBtn.addEventListener('click', toggleTaskForm);
 
-window.onload = getCurrentProj();
+window.onload = setCurrentProj();
+window.onload = setProjectPage();
 window.onload = fetchTasks();
