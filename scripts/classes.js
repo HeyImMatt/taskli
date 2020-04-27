@@ -40,6 +40,7 @@ class Project extends ObjectHandler {
     this.status = status;
   }
 
+  //not using the function below to create tasks probably. let's do that.
   createTask() {
     let task = new Task(...arguments);
     this.tasks.push(task)
@@ -68,6 +69,7 @@ class Task extends ObjectHandler {
     this.status = status;
   }
 
+  // let's get rid of checklist items on tasks. can probably do that via notes or something.
   createCheckListItem() {
     let item = new ChecklistItem(...arguments);
     this.checklistItems.push(item)
