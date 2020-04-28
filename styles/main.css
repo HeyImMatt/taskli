@@ -7,3 +7,11 @@ ul {
   display: flex;
   justify-content: flex-start;
 }
+
+.task {
+  text-decoration: none;
+}
+
+.taskComplete {
+  text-decoration: line-through;
+}
