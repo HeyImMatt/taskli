@@ -78,7 +78,6 @@ function updateTasksList(task) {
   li.innerHTML = `
     <input type="checkbox" class="checkbox" id=${task.uid}>${task.name} - ${task.description} - Checklist: ${task.checklistItems.length} - ${task.priority} - ${task.dueDate} <button id="${task.uid}" class="deleteBtn">Delete</button>`;
   ul.appendChild(li);
-  //li.addEventListener('click', toggleTaskComplete);
 }
 
 function toggleTaskComplete() {
