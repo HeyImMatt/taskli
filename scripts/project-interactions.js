@@ -76,7 +76,7 @@ function updateTasksList(task) {
   li.className = 'task';
   li.setAttribute('id', `${task.uid}`);
   li.innerHTML = `
-    <input type="checkbox" class="checkbox" id=${task.uid}>${task.name} - ${task.priority} - ${task.dueDate} <button id="${task.uid}" class="deleteBtn">Delete</button>`;
+    <input type="checkbox" class="checkbox" id=${task.uid}>${task.name} - ${task.priority} - ${task.dueDate} <br><button id="${task.uid}" class="deleteBtn">Delete</button>`;
   ul.appendChild(li);
 }
 
@@ -105,7 +105,7 @@ function fetchTasks() {
       li.className = 'taskComplete';
     }
     li.innerHTML = `
-    <input type="checkbox" class="checkbox" id=${task.uid} ${isChecked}>${task.name} - ${task.priority} - ${task.dueDate} <button id="${task.uid}" class="deleteBtn">Delete</button>`;
+    <input type="checkbox" class="checkbox" id=${task.uid} ${isChecked}>${task.name} - ${task.priority} - ${task.dueDate} <br><button id="${task.uid}" class="deleteBtn">Delete</button>`;
     ul.appendChild(li);
   });
 }

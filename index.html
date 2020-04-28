@@ -9,42 +9,49 @@
   <link rel="stylesheet" href="styles/main.css" />
   <script src="scripts/classes.js" defer></script>
   <script src="scripts/index-interactions.js" defer></script>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
 </head>
 
 <body>
-  <h1>Taskli</h1>
-  <h2>Get sh*t done</h2>
-  <button id="newProjBtn">Add New Project</button>
-  <br>
-  <br>
-  <form id="newProjForm" style="display: none">
-    <label for="projName">Project Name</label><br>
-    <input type="text" id="projName"><br>
-    <label for="projDescription">Project Description</label><br>
-    <textarea id="projDescription"></textarea><br>
-    <label for="projNotes">Project Notes</label><br>
-    <textarea id="projNotes"></textarea><br>
-    <label for="projDueDate">Due Date</label>
-    <input type="date" id="projDueDate"><br>
-    <label for="projPriority">Priority</label>
-    <select id="projPriority">
-      <option>Urgent</option>
-      <option>High</option>
-      <option>Medium</option>
-      <option>Low</option>
-    </select><br>
-    <label for="projStatus">Status</label>
-    <select id="projStatus">
-      <option>Backlog</option>
-      <option>In Progress</option>
-      <option>On Hold</option>
-      <option>Done</option>
-    </select>
-    <br>
-    <br>
-    <button type="reset" id="projCreateBtn">Create</button>
-  </form>
-  <div id="projContainer">
-    <ul id="projList">Projects<br><br></ul>
+  <div id="header">
+    <h1>Taskli</h1>
+    <h2><i>Get sh*t done</i></h2>
+  </div>
+  <div id="content">
+    <div id="sideNav">
+      <h3>Projects</h3>
+      <ul id="projList"></ul>
+      <button id="newProjBtn">Add New Project</button>
+    </div>
+    <div id="projectContent">
+      <form id="newProjForm" style="display: none">
+        <label for="projName">Project Name</label><br>
+        <input type="text" id="projName"><br>
+        <label for="projDescription">Project Description</label><br>
+        <textarea id="projDescription"></textarea><br>
+        <label for="projNotes">Project Notes</label><br>
+        <textarea id="projNotes"></textarea><br>
+        <label for="projDueDate">Due Date</label>
+        <input type="date" id="projDueDate"><br>
+        <label for="projPriority">Priority</label>
+        <select id="projPriority">
+          <option>Urgent</option>
+          <option>High</option>
+          <option>Medium</option>
+          <option>Low</option>
+        </select><br>
+        <label for="projStatus">Status</label>
+        <select id="projStatus">
+          <option>Backlog</option>
+          <option>In Progress</option>
+          <option>On Hold</option>
+          <option>Done</option>
+        </select>
+        <br>
+        <br>
+        <button type="reset" id="projCreateBtn">Create</button>
+      </form>
+    </div>
   </div>
 </body>

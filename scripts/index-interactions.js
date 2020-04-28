@@ -61,7 +61,7 @@ function updateProjectsList(project) {
   let li = document.createElement('li');
   li.setAttribute('id', `${project.uid}`)
   li.innerHTML = `
-  <a href="project.html" id="${project.uid}">${project.name} - ${project.description} - Tasks: ${project.tasks.length} - ${project.priority} - ${project.dueDate}</a> <button id="${project.uid}" class="deleteBtn">Delete</button>`;
+  <a href="project.html" id="${project.uid}">${project.name}<br><button id="${project.uid}" class="deleteBtn">Delete</button>`;
   ul.appendChild(li);
   setProjLinkListeners();
   setDeleteListeners();
@@ -75,7 +75,7 @@ function fetchProjects() {
       let li = document.createElement('li');
       li.setAttribute('id', `${project.uid}`)
       li.innerHTML = `
-      <a href="project.html" id="${project.uid}">${project.name} - ${project.description} - Tasks: ${project.tasks.length} - ${project.priority} - ${project.dueDate}</a> <button id="${project.uid}" class="deleteBtn">Delete</button>`;
+      <a href="project.html" id="${project.uid}">${project.name}</a><br><button id="${project.uid}" class="deleteBtn">Delete</button>`;
       ul.appendChild(li);
     });
   }
