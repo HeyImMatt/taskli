@@ -2,6 +2,7 @@ const taskCreateBtn = document.getElementById('taskCreateBtn');
 const taskForm = document.getElementById('newTaskForm');
 const newTaskBtn = document.getElementById('newTaskBtn');
 const checkboxes = document.getElementsByClassName('checkbox');
+const deleteBtns = document.getElementsByClassName('deleteBtn');
 let storedProjs;
 let currentProjId;
 let currentProj;
@@ -49,6 +50,23 @@ function createTask() {
   window.localStorage.removeItem('Projects List');
   window.localStorage.setItem('Projects List', JSON.stringify(storedProjs));
   updateTasksList(task);
+  setCheckboxListeners();
+  setDeleteListeners();
+}
+
+function deleteTask() {
+  let i = taskListArr.findIndex((el) => el.uid == this.id);
+  if (
+    confirm(
+      `Are you sure you want to delete ${taskListArr[i].name}? This cannot be undone.`,
+    ) == true
+  ) {
+    let ul = document.getElementById('taskList');
+    let li = document.getElementById(`${this.id}`);
+    ul.removeChild(li);
+    taskListArr.splice(i, 1);
+    updateProj()
+  }
 }
 
 function updateTasksList(task) {
@@ -56,16 +74,14 @@ function updateTasksList(task) {
   let li = document.createElement('li');
   li.id = task.uid;
   li.className = 'task';
+  li.setAttribute('id', `${task.uid}`);
   li.innerHTML = `
-    <input type="checkbox" class="checkbox" id=${task.uid}>${task.name} - ${task.description} - Checklist: ${task.checklistItems.length} - ${task.priority} - ${task.dueDate}`;
+    <input type="checkbox" class="checkbox" id=${task.uid}>${task.name} - ${task.description} - Checklist: ${task.checklistItems.length} - ${task.priority} - ${task.dueDate} <button id="${task.uid}" class="deleteBtn">Delete</button>`;
   ul.appendChild(li);
-  li.addEventListener('click', toggleTaskComplete);
 }
-//code to execute when task checkbox is checked
+
 function toggleTaskComplete() {
   let i = taskListArr.findIndex((el) => el.uid == this.id);
-  console.log(this.id);
-  console.log(i);
   let taskListItem = document.getElementById(this.id);
   taskListArr[i].isComplete == false
     ? (taskListArr[i].isComplete = true)
@@ -81,7 +97,7 @@ function fetchTasks() {
   taskListArr.forEach((task) => {
     let li = document.createElement('li');
     li.id = task.uid;
-    let isChecked = 'checked'
+    let isChecked = 'checked';
     if (task.isComplete == false) {
       li.className = 'task';
       isChecked = '';
@@ -89,7 +105,7 @@ function fetchTasks() {
       li.className = 'taskComplete';
     }
     li.innerHTML = `
-    <input type="checkbox" class="checkbox" id=${task.uid} ${isChecked}>${task.name} - ${task.description} - Checklist: ${task.checklistItems.length} - ${task.priority} - ${task.dueDate}`;
+    <input type="checkbox" class="checkbox" id=${task.uid} ${isChecked}>${task.name} - ${task.description} - Checklist: ${task.checklistItems.length} - ${task.priority} - ${task.dueDate} <button id="${task.uid}" class="deleteBtn">Delete</button>`;
     ul.appendChild(li);
   });
 }
@@ -97,6 +113,12 @@ function fetchTasks() {
 function setCheckboxListeners() {
   for (let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].addEventListener('click', toggleTaskComplete);
+  }
+}
+
+function setDeleteListeners() {
+  for (let i = 0; i < deleteBtns.length; i++) {
+    deleteBtns[i].addEventListener('click', deleteTask);
   }
 }
 
@@ -108,3 +130,4 @@ window.onload = setCurrentProj();
 window.onload = setProjectPage();
 window.onload = fetchTasks();
 window.onload = setCheckboxListeners();
+window.onload = setDeleteListeners();
