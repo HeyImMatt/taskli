@@ -23,6 +23,8 @@ body {
   height: 80px;
   background-color: var(--primary-color-dark);
   color: var(--bg-color);
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
 }
 
 #header h1, h2 {
@@ -45,6 +47,8 @@ body {
   background-color: var(--primary-color);
   color: var(--bg-color);
   font-family: 'Montserrat', sans-serif;
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
 }
 
 #sideNav h3 {
