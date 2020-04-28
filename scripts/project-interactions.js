@@ -61,11 +61,9 @@ function updateTasksList(task) {
   ul.appendChild(li);
   li.addEventListener('click', toggleTaskComplete);
 }
-//code to execute when task checkbox is checked
+
 function toggleTaskComplete() {
   let i = taskListArr.findIndex((el) => el.uid == this.id);
-  console.log(this.id);
-  console.log(i);
   let taskListItem = document.getElementById(this.id);
   taskListArr[i].isComplete == false
     ? (taskListArr[i].isComplete = true)
