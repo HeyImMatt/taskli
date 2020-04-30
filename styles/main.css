@@ -23,14 +23,16 @@ body {
   height: 80px;
   background-color: var(--primary-color-dark);
   color: var(--bg-color);
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
+  border-top-left-radius: 8px;
+  border-top-right-radius: 8px;
 }
 
-#header h1, h2 {
-  margin-top: 4px;
-  margin-bottom: 4px;
-  font-family: 'Montserrat', sans-serif;
+#header h1,
+h2 {
+  font-family: 'Reenie Beanie', cursive;
+  font-size: 60px;
+  margin-top: 13px;
+  margin-bottom: 0px;
 }
 
 #content {
@@ -44,11 +46,11 @@ body {
   flex-direction: column;
   width: 180px;
   height: 500px;
-  background-color: var(--primary-color);
-  color: var(--bg-color);
+  background-color: #ececec;
+  color: var(--font-color);
   font-family: 'Montserrat', sans-serif;
-  border-bottom-left-radius: 5px;
-  border-bottom-right-radius: 5px;
+  border-bottom-left-radius: 8px;
+  border-bottom-right-radius: 8px;
 }
 
 #sideNav h3 {
@@ -56,7 +58,7 @@ body {
 }
 
 #sideNav a {
-  color: var(--bg-color);
+  color: var(--font-color);
   text-decoration: none;
 }
 
@@ -67,9 +69,31 @@ ul {
 }
 
 #sideNav li {
+  display: flex;
   padding: 5px;
-  text-align: center;
-  border: solid, var(--nav-color);
+}
+
+#sideNav a {
+  display: inline-flex;
+  align-self: center;
+  margin-left: auto;
+}
+
+#sideNav li button {
+  display: inline-flex;
+  margin-left: auto;
+  background-image: url(assets/deleteicon.png);
+  background-color: transparent;
+  border: transparent;
+}
+
+#newProjBtn {
+  display: inline-flex;
+  justify-content: center;
+}
+
+#newProjBtn button {
+  width: 20px;
 }
 
 #projectContent {
