@@ -55,11 +55,7 @@ h2 {
 
 #sideNav h3 {
   align-self: center;
-}
-
-#sideNav a {
-  color: var(--font-color);
-  text-decoration: none;
+  text-decoration: underline;
 }
 
 ul {
@@ -73,27 +69,52 @@ ul {
   padding: 5px;
 }
 
-#sideNav a {
-  display: inline-flex;
-  align-self: center;
-  margin-left: auto;
+#sideNav li:hover {
+  background-color: darkgray;
 }
 
 #sideNav li button {
   display: inline-flex;
   margin-left: auto;
-  background-image: url(assets/deleteicon.png);
+  background-image: url(../assets/deleteicon.svg);
   background-color: transparent;
+  background-repeat: no-repeat;
   border: transparent;
+  padding-right: 10px;
+  outline: none;
+}
+
+#sideNav a {
+  color: var(--font-color);
+  text-decoration: none;
+  display: inline-flex;
+  align-self: center;
+  margin-left: auto;
 }
 
 #newProjBtn {
   display: inline-flex;
+  flex-direction: row;
   justify-content: center;
+  align-items: center;
+  align-self: center;
+  background-color: var(--primary-color);
+  color: var(--btn-font-color);
+  border-radius: 10px;
+  height: 30px;
+  width: 150px;
 }
 
 #newProjBtn button {
-  width: 20px;
+  background-image: url(../assets/addicon.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: transparent;
+  outline: none;
+  height: 16px;
+  width: 16px;
+  margin-right: 3px;
 }
 
 #projectContent {
