@@ -1,9 +1,22 @@
-
-
-function updateProj() {
-  projects.splice(currentProjIndex, 1, currentProj);
-  window.localStorage.removeItem('Projects List');
-  window.localStorage.setItem('Projects List', JSON.stringify(projects));
+class Task extends ObjectHandler {
+  constructor(
+    name,
+    isComplete,
+    description,
+    notes,
+    checklistItems,
+    dueDate,
+    priority,
+    status,
+  ) {
+    super(...arguments);
+    this.description = description;
+    this.notes = notes;
+    this.checklistItems = []
+    this.dueDate = dueDate;
+    this.priority = priority;
+    this.status = status;
+  }
 }
 
 function createTask() {

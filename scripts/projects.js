@@ -1,3 +1,31 @@
+class Project extends ObjectHandler {
+  constructor(
+    name,
+    isComplete,
+    description,
+    notes,
+    tasks,
+    dueDate,
+    priority,
+    status,
+  ) {
+    super(...arguments);
+    this.description = description;
+    this.notes = notes;
+    this.tasks = [];
+    this.dueDate = dueDate;
+    this.priority = priority;
+    this.status = status;
+  }
+
+  //not using the function below to create tasks probably. let's do that.
+  createTask() {
+    let task = new Task(...arguments);
+    this.tasks.push(task)
+    console.log(this.tasks);
+  }
+
+}
 
 function createProject() {
   let project = new Project(
@@ -19,6 +47,12 @@ function createProject() {
   }
   updateItemList(project);
   toggleForm(projForm);
+}
+
+function updateProj() {
+  projects.splice(currentProjIndex, 1, currentProj);
+  window.localStorage.removeItem('Projects List');
+  window.localStorage.setItem('Projects List', JSON.stringify(projects));
 }
 
 function deleteProject() {
@@ -51,5 +85,3 @@ function fetchProjects() {
     });
   }
 }
-
-
