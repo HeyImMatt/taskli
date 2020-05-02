@@ -1,11 +1,11 @@
-const projForm = document.getElementById('newProjForm');
-const newProjBtn = document.getElementById('newProjBtn');
-const projCreateBtn = document.getElementById('projCreateBtn');
-const deleteProjBtn = document.getElementById('deleteProj');
-const projList = document.getElementById('projList');
-const projLinks = document.getElementsByTagName('a');
-let projects;
-let currentProjId;
+// const projForm = document.getElementById('newProjForm');
+// const newProjBtn = document.getElementById('newProjBtn');
+// const projCreateBtn = document.getElementById('projCreateBtn');
+// const deleteProjBtn = document.getElementById('deleteProj');
+// const projList = document.getElementById('projList');
+// const projLinks = document.getElementsByTagName('a');
+// let projects;
+// let currentProjId;
 
 function getProjName() {
   window.localStorage.setItem('currentProjId', JSON.stringify(this.id));
@@ -15,13 +15,7 @@ function showFirstProject() {
   projList.firstElementChild.querySelector('a').click();
 }
 
-function toggleForm() {
-  if (projForm.style.display === 'none') {
-    projForm.style.display = 'block';
-  } else {
-    projForm.style.display = 'none';
-  }
-}
+
 
 function createProject() {
   let project = new Project(
@@ -37,12 +31,12 @@ function createProject() {
     window.localStorage.setItem('Projects List', JSON.stringify([project]));
   } else {
     let arr = [...projects, project];
-    console.log(arr);
     window.localStorage.removeItem('Projects List');
     window.localStorage.setItem('Projects List', JSON.stringify(arr));
     projects = JSON.parse(window.localStorage.getItem('Projects List'));
   }
   updateProjectsList(project);
+  toggleForm(projForm);
 }
 
 function deleteProject() {
@@ -93,9 +87,9 @@ function setProjLinkListeners() {
   }
 }
 
-newProjBtn.addEventListener('click', toggleForm);
+newProjBtn.addEventListener('click', event => {
+  toggleForm(projForm)});
 projCreateBtn.addEventListener('click', createProject);
-projCreateBtn.addEventListener('click', toggleForm);
 deleteProjBtn.addEventListener('click', deleteProject);
 
 window.onload = fetchProjects();

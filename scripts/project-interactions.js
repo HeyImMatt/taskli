@@ -1,39 +1,20 @@
-const taskCreateBtn = document.getElementById('taskCreateBtn');
-const taskForm = document.getElementById('newTaskForm');
-const newTaskBtn = document.getElementById('newTaskBtn');
-const checkboxes = document.getElementsByClassName('checkbox');
-const deleteTaskBtns = document.getElementsByClassName('deleteTaskBtn');
-let storedProjs;
-let currentProj;
-let currentProjIndex;
-let taskListArr;
+// const taskCreateBtn = document.getElementById('taskCreateBtn');
+// const taskForm = document.getElementById('newTaskForm');
+// const newTaskBtn = document.getElementById('newTaskBtn');
+// const checkboxes = document.getElementsByClassName('checkbox');
+// const deleteTaskBtns = document.getElementsByClassName('deleteTaskBtn');
+// let currentProj;
+// let currentProjIndex;
+// let taskListArr;
 
-function setCurrentProj() {
-  currentProjId = JSON.parse(window.localStorage.getItem('currentProjId'));
-  storedProjs = JSON.parse(window.localStorage.getItem('Projects List'));
-  currentProjIndex = storedProjs.findIndex((el) => el.uid == currentProjId);
-  currentProj = storedProjs[currentProjIndex];
-  currentProj.tasks ? taskListArr = currentProj.tasks : taskListArr = [];
-}
 
 function updateProj() {
-  storedProjs.splice(currentProjIndex, 1, currentProj);
+  projects.splice(currentProjIndex, 1, currentProj);
   window.localStorage.removeItem('Projects List');
-  window.localStorage.setItem('Projects List', JSON.stringify(storedProjs));
+  window.localStorage.setItem('Projects List', JSON.stringify(projects));
 }
 
-function setProjectPage() {
-  let projTitle = document.getElementById('currentProj');
-  projTitle.innerHTML = `<h3>${currentProj.name}</h3>`;
-}
 
-function toggleTaskForm() {
-  if (taskForm.style.display === 'none') {
-    taskForm.style.display = 'block';
-  } else {
-    taskForm.style.display = 'none';
-  }
-}
 
 function createTask() {
   let task = new Task(
@@ -47,8 +28,9 @@ function createTask() {
   );
   taskListArr.push(task);
   window.localStorage.removeItem('Projects List');
-  window.localStorage.setItem('Projects List', JSON.stringify(storedProjs));
+  window.localStorage.setItem('Projects List', JSON.stringify(projects));
   updateTasksList(task);
+  toggleForm(taskForm);
   setCheckboxListeners();
   setDeleteTaskListeners();
 }
@@ -132,15 +114,8 @@ function clearTasksList() {
   ul.innerHTML = '';
 }
 
-newTaskBtn.addEventListener('click', toggleTaskForm);
+newTaskBtn.addEventListener('click', event => {
+  toggleForm(taskForm)});
 taskCreateBtn.addEventListener('click', createTask);
-taskCreateBtn.addEventListener('click', toggleTaskForm);
+//taskCreateBtn.addEventListener('click', toggleTaskForm);
 
-function loadProject() {
-setCurrentProj();
-setProjectPage();
-clearTasksList()
-fetchTasks();
-setCheckboxListeners();
-setDeleteTaskListeners();
-}
