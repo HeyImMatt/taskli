@@ -1,7 +1,7 @@
 const projForm = document.getElementById('newProjForm');
 const newProjBtn = document.getElementById('newProjBtn');
 const projCreateBtn = document.getElementById('projCreateBtn');
-const deleteProjBtns = document.getElementsByClassName('deleteProjBtn');
+const deleteProjBtn = document.getElementById('deleteProj');
 const projList = document.getElementById('projList');
 const projLinks = document.getElementsByTagName('a');
 let projects;
@@ -46,18 +46,19 @@ function createProject() {
 }
 
 function deleteProject() {
-  let i = projects.findIndex((el) => el.uid == this.id);
+  let i = projects.findIndex((el) => el.uid == currentProjId);
   if (
     confirm(
       `Are you sure you want to delete ${projects[i].name}? This cannot be undone.`,
     ) == true
   ) {
     let ul = document.getElementById('projList');
-    let li = document.getElementById(`${this.id}`)
+    let li = document.getElementById(`${currentProjId}`)
     ul.removeChild(li);
     projects.splice(i, 1);
     window.localStorage.removeItem('Projects List');
     window.localStorage.setItem('Projects List', JSON.stringify(projects));
+    showFirstProject();
   }
 }
 
@@ -66,10 +67,9 @@ function updateProjectsList(project) {
   let li = document.createElement('li');
   li.setAttribute('id', `${project.uid}`)
   li.innerHTML = `
-  <a href="#" id="${project.uid}">${project.name} <button id="${project.uid}" class="deleteProjBtn"></button>`;
+  <a href="#" id="${project.uid}">${project.name}</a>`;
   ul.appendChild(li);
   setProjLinkListeners();
-  setProjectDeleteListeners();
 }
 
 function fetchProjects() {
@@ -80,7 +80,7 @@ function fetchProjects() {
       let li = document.createElement('li');
       li.setAttribute('id', `${project.uid}`)
       li.innerHTML = `
-      <a href="#" id="${project.uid}">${project.name}</a> <button id="${project.uid}" class="deleteProjBtn"></button>`;
+      <a href="#" id="${project.uid}">${project.name}</a>`;
       ul.appendChild(li);
     });
   }
@@ -93,17 +93,11 @@ function setProjLinkListeners() {
   }
 }
 
-function setProjectDeleteListeners() {
-  for (let i = 0; i < deleteProjBtns.length; i++) {
-    deleteProjBtns[i].addEventListener('click', deleteProject);
-  }
-}
-
 newProjBtn.addEventListener('click', toggleForm);
 projCreateBtn.addEventListener('click', createProject);
 projCreateBtn.addEventListener('click', toggleForm);
+deleteProjBtn.addEventListener('click', deleteProject);
 
 window.onload = fetchProjects();
 window.onload = setProjLinkListeners();
-window.onload = setProjectDeleteListeners();
 window.onload = showFirstProject();
