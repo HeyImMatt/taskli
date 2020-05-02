@@ -114,6 +114,8 @@ function fetchTasks() {
   });
 }
 
+// Note: can get all buttons in the variable and then use buttons.forEach (btn => {
+  // btn.addEventListener('click', function)})
 function setCheckboxListeners() {
   for (let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].addEventListener('click', toggleTaskComplete);
