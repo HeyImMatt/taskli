@@ -1,8 +1,4 @@
 
-
-
-
-
 function createProject() {
   let project = new Project(
     document.getElementById('projName').value,
@@ -41,16 +37,6 @@ function deleteProject() {
     showFirstProject();
   }
 }
-
-// function updateProjectsList(project) {
-//   let ul = document.getElementById('projList');
-//   let li = document.createElement('li');
-//   li.setAttribute('id', `${project.uid}`)
-//   li.innerHTML = `
-//   <a href="#" id="${project.uid}">${project.name}</a>`;
-//   ul.appendChild(li);
-//   setProjLinkListeners();
-// }
 
 function fetchProjects() {
   projects = JSON.parse(window.localStorage.getItem('Projects List'));

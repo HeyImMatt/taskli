@@ -6,19 +6,6 @@ function updateProj() {
   window.localStorage.setItem('Projects List', JSON.stringify(projects));
 }
 
-
-// function updateTasksList(task) {
-//   let ul = document.getElementById('taskList');
-//   let li = document.createElement('li');
-//   li.id = task.uid;
-//   li.className = 'task';
-//   //li.setAttribute('id', `${task.uid}`);
-//   li.innerHTML = `
-//     <input type="checkbox" class="checkbox" id=${task.uid}>${task.name} - ${task.priority} - ${task.dueDate} <button id="${task.uid}" class="deleteTaskBtn">X</button>`;
-//   ul.appendChild(li);
-// }
-
-
 function createTask() {
   let task = new Task(
     document.getElementById('taskName').value,
@@ -36,10 +23,6 @@ function createTask() {
   toggleForm(taskForm);
   setCheckboxListeners();
   setDeleteTaskListeners();
-}
-
-function deleteItem() {
-
 }
 
 function deleteTask() {
