@@ -4,7 +4,6 @@ const newTaskBtn = document.getElementById('newTaskBtn');
 const checkboxes = document.getElementsByClassName('checkbox');
 const deleteTaskBtns = document.getElementsByClassName('deleteTaskBtn');
 let storedProjs;
-//let currentProjId;
 let currentProj;
 let currentProjIndex;
 let taskListArr;
@@ -25,7 +24,7 @@ function updateProj() {
 
 function setProjectPage() {
   let projTitle = document.getElementById('currentProj');
-  projTitle.innerHTML = `${currentProj.name}  <button id="${currentProj.uid}" class="deleteProjBtn"></button>`;
+  projTitle.innerHTML = `<h3>${currentProj.name}</h3>`;
 }
 
 function toggleTaskForm() {

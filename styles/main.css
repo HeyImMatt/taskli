@@ -73,24 +73,13 @@ ul {
   background-color: darkgray;
 }
 
-#sideNav li button {
-  display: inline-flex;
-  margin-left: auto;
-  background-image: url(../assets/deleteicon.svg);
-  background-color: transparent;
-  background-repeat: no-repeat;
-  border: transparent;
-  padding-right: 10px;
-  outline: none;
-  cursor: pointer;
-}
-
 #sideNav a {
   color: var(--font-color);
   text-decoration: none;
   display: inline-flex;
   align-self: center;
   margin-left: auto;
+  margin-right: auto;
 }
 
 #newProjBtn {
@@ -126,7 +115,44 @@ ul {
   flex-direction: column;
   flex-grow: 1;
   margin-left: 25px;
-  margin-top: 25px;
+  margin-top: 16px;
+}
+
+#projectHeader {
+  display: flex;
+  flex-direction: row;
+}
+
+#projectHeader h3 {
+  margin-top: 3px;
+}
+
+#deleteProj{
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  margin-left: auto;
+  background-color: var(--secondary-color);
+  color: var(--btn-font-color);
+  border-radius: 10px;
+  height: 30px;
+  width: 150px;
+  outline: none;
+  cursor: pointer;
+}
+
+#deleteProj button {
+  background-image: url(../assets/deleteicon.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: transparent;
+  outline: none;
+  height: 16px;
+  width: 16px;
+  margin-right: 6px;
+  cursor: pointer;
 }
 
 .task {
