@@ -1,19 +1,5 @@
-// const projForm = document.getElementById('newProjForm');
-// const newProjBtn = document.getElementById('newProjBtn');
-// const projCreateBtn = document.getElementById('projCreateBtn');
-// const deleteProjBtn = document.getElementById('deleteProj');
-// const projList = document.getElementById('projList');
-// const projLinks = document.getElementsByTagName('a');
-// let projects;
-// let currentProjId;
 
-function getProjName() {
-  window.localStorage.setItem('currentProjId', JSON.stringify(this.id));
-}
 
-function showFirstProject() {
-  projList.firstElementChild.querySelector('a').click();
-}
 
 
 
@@ -35,7 +21,7 @@ function createProject() {
     window.localStorage.setItem('Projects List', JSON.stringify(arr));
     projects = JSON.parse(window.localStorage.getItem('Projects List'));
   }
-  updateProjectsList(project);
+  updateItemList(project);
   toggleForm(projForm);
 }
 
@@ -56,15 +42,15 @@ function deleteProject() {
   }
 }
 
-function updateProjectsList(project) {
-  let ul = document.getElementById('projList');
-  let li = document.createElement('li');
-  li.setAttribute('id', `${project.uid}`)
-  li.innerHTML = `
-  <a href="#" id="${project.uid}">${project.name}</a>`;
-  ul.appendChild(li);
-  setProjLinkListeners();
-}
+// function updateProjectsList(project) {
+//   let ul = document.getElementById('projList');
+//   let li = document.createElement('li');
+//   li.setAttribute('id', `${project.uid}`)
+//   li.innerHTML = `
+//   <a href="#" id="${project.uid}">${project.name}</a>`;
+//   ul.appendChild(li);
+//   setProjLinkListeners();
+// }
 
 function fetchProjects() {
   projects = JSON.parse(window.localStorage.getItem('Projects List'));
@@ -80,18 +66,4 @@ function fetchProjects() {
   }
 }
 
-function setProjLinkListeners() {
-  for (let i = 0; i < projLinks.length; i++) {
-    projLinks[i].addEventListener('click', getProjName);
-    projLinks[i].addEventListener('click', loadProject);
-  }
-}
 
-newProjBtn.addEventListener('click', event => {
-  toggleForm(projForm)});
-projCreateBtn.addEventListener('click', createProject);
-deleteProjBtn.addEventListener('click', deleteProject);
-
-window.onload = fetchProjects();
-window.onload = setProjLinkListeners();
-window.onload = showFirstProject();
