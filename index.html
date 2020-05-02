@@ -8,6 +8,7 @@
   <title>Taskli</title>
   <link rel="stylesheet" href="styles/main.css" />
   <script src="scripts/classes.js" defer></script>
+  <script src="scripts/project-interactions.js" defer></script>
   <script src="scripts/index-interactions.js" defer></script>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Montserrat">
   <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Raleway">
@@ -25,6 +26,40 @@
       <span id="newProjBtn"><button></button>  New Project</span>
     </div>
     <div id="projectContent">
+      <h4><span id="currentProj">Project Page</span></h4>
+      <div id="taskContainer">
+        <ul id="taskList">Tasks<br><br></ul>
+      </div>
+      <button id="newTaskBtn">Add New Task</button>
+      <br>
+      <br>
+      <form id="newTaskForm" style="display: none">
+        <label for="taskName">Task Name</label><br>
+        <input type="text" id="taskName"><br>
+        <label for="taskDescription">Task Description</label><br>
+        <textarea id="taskDescription"></textarea><br>
+        <label for="taskNotes">Task Notes</label><br>
+        <textarea id="taskNotes"></textarea><br>
+        <label for="taskDueDate">Due Date</label>
+        <input type="date" id="taskDueDate"><br>
+        <label for="taskPriority">Priority</label>
+        <select id="taskPriority">
+          <option>Urgent</option>
+          <option>High</option>
+          <option>Medium</option>
+          <option>Low</option>
+        </select><br>
+        <label for="taskStatus">Status</label>
+        <select id="taskStatus">
+          <option>Backlog</option>
+          <option>In Progress</option>
+          <option>On Hold</option>
+          <option>Done</option>
+        </select>
+        <br>
+        <br>
+        <button type="reset" id="taskCreateBtn">Create</button>
+      </form>
       <form id="newProjForm" style="display: none">
         <label for="projName">Project Name</label><br>
         <input type="text" id="projName"><br>

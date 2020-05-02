@@ -2,9 +2,9 @@ const taskCreateBtn = document.getElementById('taskCreateBtn');
 const taskForm = document.getElementById('newTaskForm');
 const newTaskBtn = document.getElementById('newTaskBtn');
 const checkboxes = document.getElementsByClassName('checkbox');
-const deleteBtns = document.getElementsByClassName('deleteBtn');
+const deleteTaskBtns = document.getElementsByClassName('deleteTaskBtn');
 let storedProjs;
-let currentProjId;
+//let currentProjId;
 let currentProj;
 let currentProjIndex;
 let taskListArr;
@@ -25,7 +25,7 @@ function updateProj() {
 
 function setProjectPage() {
   let projTitle = document.getElementById('currentProj');
-  projTitle.innerHTML = currentProj.name;
+  projTitle.innerHTML = `${currentProj.name}  <button id="${currentProj.uid}" class="deleteProjBtn"></button>`;
 }
 
 function toggleTaskForm() {
@@ -51,7 +51,11 @@ function createTask() {
   window.localStorage.setItem('Projects List', JSON.stringify(storedProjs));
   updateTasksList(task);
   setCheckboxListeners();
-  setDeleteListeners();
+  setDeleteTaskListeners();
+}
+
+function deleteItem() {
+
 }
 
 function deleteTask() {
@@ -76,7 +80,7 @@ function updateTasksList(task) {
   li.className = 'task';
   li.setAttribute('id', `${task.uid}`);
   li.innerHTML = `
-    <input type="checkbox" class="checkbox" id=${task.uid}>${task.name} - ${task.priority} - ${task.dueDate} <button id="${task.uid}" class="deleteBtn">X</button>`;
+    <input type="checkbox" class="checkbox" id=${task.uid}>${task.name} - ${task.priority} - ${task.dueDate} <button id="${task.uid}" class="deleteTaskBtn">X</button>`;
   ul.appendChild(li);
 }
 
@@ -105,29 +109,39 @@ function fetchTasks() {
       li.className = 'taskComplete';
     }
     li.innerHTML = `
-    <input type="checkbox" class="checkbox" id=${task.uid} ${isChecked}>${task.name} - ${task.priority} - ${task.dueDate} <button id="${task.uid}" class="deleteBtn">X</button>`;
+    <input type="checkbox" class="checkbox" id=${task.uid} ${isChecked}>${task.name} - ${task.priority} - ${task.dueDate} <button id="${task.uid}" class="deleteTaskBtn">X</button>`;
     ul.appendChild(li);
   });
 }
 
+// Note: can get all buttons in the variable and then use buttons.forEach (btn => {
+  // btn.addEventListener('click', function)})
 function setCheckboxListeners() {
   for (let i = 0; i < checkboxes.length; i++) {
     checkboxes[i].addEventListener('click', toggleTaskComplete);
   }
 }
 
-function setDeleteListeners() {
-  for (let i = 0; i < deleteBtns.length; i++) {
-    deleteBtns[i].addEventListener('click', deleteTask);
+function setDeleteTaskListeners() {
+  for (let i = 0; i < deleteTaskBtns.length; i++) {
+    deleteTaskBtns[i].addEventListener('click', deleteTask);
   }
+}
+
+function clearTasksList() {
+  let ul = document.getElementById('taskList');
+  ul.innerHTML = '';
 }
 
 newTaskBtn.addEventListener('click', toggleTaskForm);
 taskCreateBtn.addEventListener('click', createTask);
 taskCreateBtn.addEventListener('click', toggleTaskForm);
 
-window.onload = setCurrentProj();
-window.onload = setProjectPage();
-window.onload = fetchTasks();
-window.onload = setCheckboxListeners();
-window.onload = setDeleteListeners();
+function loadProject() {
+setCurrentProj();
+setProjectPage();
+clearTasksList()
+fetchTasks();
+setCheckboxListeners();
+setDeleteTaskListeners();
+}
