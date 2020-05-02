@@ -51,8 +51,7 @@ function createProject() {
 
 function updateProj() {
   projects.splice(currentProjIndex, 1, currentProj);
-  window.localStorage.removeItem('Projects List');
-  window.localStorage.setItem('Projects List', JSON.stringify(projects));
+  updateLocalStorage();
 }
 
 function deleteProject() {
@@ -66,22 +65,7 @@ function deleteProject() {
     let li = document.getElementById(`${currentProjId}`)
     ul.removeChild(li);
     projects.splice(i, 1);
-    window.localStorage.removeItem('Projects List');
-    window.localStorage.setItem('Projects List', JSON.stringify(projects));
+    updateLocalStorage();
     showFirstProject();
-  }
-}
-
-function fetchProjects() {
-  projects = JSON.parse(window.localStorage.getItem('Projects List'));
-  if (projects !== null) {
-    let ul = document.getElementById('projList');
-    projects.forEach((project) => {
-      let li = document.createElement('li');
-      li.setAttribute('id', `${project.uid}`)
-      li.innerHTML = `
-      <a href="#" id="${project.uid}">${project.name}</a>`;
-      ul.appendChild(li);
-    });
   }
 }

@@ -4,7 +4,6 @@ class Task extends ObjectHandler {
     isComplete,
     description,
     notes,
-    checklistItems,
     dueDate,
     priority,
     status,
@@ -12,7 +11,6 @@ class Task extends ObjectHandler {
     super(...arguments);
     this.description = description;
     this.notes = notes;
-    this.checklistItems = []
     this.dueDate = dueDate;
     this.priority = priority;
     this.status = status;
@@ -30,8 +28,7 @@ function createTask() {
     document.getElementById('taskStatus').value,
   );
   taskListArr.push(task);
-  window.localStorage.removeItem('Projects List');
-  window.localStorage.setItem('Projects List', JSON.stringify(projects));
+  updateLocalStorage()
   updateItemList(task);
   toggleForm(taskForm);
   setCheckboxListeners();

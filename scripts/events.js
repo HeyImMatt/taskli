@@ -47,9 +47,28 @@ function updateItemList(item) {
   ul.appendChild(li);
 }
 
+function updateLocalStorage() {
+  window.localStorage.removeItem('Projects List');
+  window.localStorage.setItem('Projects List', JSON.stringify(projects));
+}
+
 // Project-specific actions
 function getProjName() {
   window.localStorage.setItem('currentProjId', JSON.stringify(this.id));
+}
+
+function fetchProjects() {
+  projects = JSON.parse(window.localStorage.getItem('Projects List'));
+  if (projects !== null) {
+    let ul = document.getElementById('projList');
+    projects.forEach((project) => {
+      let li = document.createElement('li');
+      li.setAttribute('id', `${project.uid}`)
+      li.innerHTML = `
+      <a href="#" id="${project.uid}">${project.name}</a>`;
+      ul.appendChild(li);
+    });
+  }
 }
 
 function setCurrentProj() {
