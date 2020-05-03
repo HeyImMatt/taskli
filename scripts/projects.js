@@ -19,7 +19,7 @@ class Project extends ObjectHandler {
 
 function createProject() {
   let project = new Project(
-    document.getElementById('projName').value,
+    projNameField.value,
     document.getElementById('projDescription').value,
   );
   if (projects === null) {
