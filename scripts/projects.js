@@ -55,14 +55,12 @@ function updateProj() {
 
 function editProject() {
   console.log(this.id);
-  switch (this.id) {
-    case 'currentProj':
-      currentProj.name = this.textContent;
-    case 'currentProjDesc':
-      currentProj.description = this.textContent;
-    default:
-      console.log('editProject fired');
+  if (this.id == 'currentProj') {
+    currentProj.name = this.textContent;
+  } else if (this.id == 'currentProjDesc') {
+    currentProj.description = this.textContent;
   }
+  console.log('editProject fired');
   updateProj();
 }
 
