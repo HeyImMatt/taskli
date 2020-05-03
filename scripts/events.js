@@ -4,11 +4,9 @@ const newTaskBtn = document.getElementById('newTaskBtn');
 const checkboxes = document.getElementsByClassName('checkbox');
 const deleteTaskBtns = document.getElementsByClassName('deleteTaskBtn');
 const taskList = document.getElementById('taskList');
-const projForm = document.getElementById('newProjForm');
 const quickAddProj = document.getElementById('quickAddProj');
 const projNameField = document.getElementById('projNameField');
 const newProjBtn = document.getElementById('newProjBtn');
-const projCreateBtn = document.getElementById('projCreateBtn');
 const deleteProjBtn = document.getElementById('deleteProj');
 const projList = document.getElementById('projList');
 const projName = document.getElementById('currentProj');
@@ -21,7 +19,6 @@ let taskListArr;
 
 function clearForms() {
   taskForm.style.display = 'none';
-  projForm.style.display = 'none';
   quickAddProj.style.display = 'none';
 }
 
@@ -126,13 +123,16 @@ function projDetailsListeners() {
 }
 
 newProjBtn.addEventListener('click', (event) => {
-  toggleForm(projForm);
   toggleForm(quickAddProj);
 });
-projCreateBtn.addEventListener('click', createProject);
 deleteProjBtn.addEventListener('click', deleteProject);
 projName.addEventListener('blur', editProject);
 projNameField.addEventListener('blur', createProject);
+projNameField.addEventListener('keyup', (event) => {
+  if (event.keyCode === 13) {
+    createProject();
+  }
+})
 
 //Task-specific actions
 
