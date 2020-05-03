@@ -21,10 +21,9 @@ class Project extends ObjectHandler {
   //not using the function below to create tasks probably. let's do that.
   createTask() {
     let task = new Task(...arguments);
-    this.tasks.push(task)
+    this.tasks.push(task);
     console.log(this.tasks);
   }
-
 }
 
 function createProject() {
@@ -54,6 +53,19 @@ function updateProj() {
   updateLocalStorage();
 }
 
+function editProject() {
+  console.log(this.id);
+  switch (this.id) {
+    case 'currentProj':
+      currentProj.name = this.textContent;
+    case 'currentProjDesc':
+      currentProj.description = this.textContent;
+    default:
+      console.log('editProject fired');
+  }
+  updateProj();
+}
+
 function deleteProject() {
   let i = projects.findIndex((el) => el.uid == currentProjId);
   if (
@@ -62,7 +74,7 @@ function deleteProject() {
     ) == true
   ) {
     let ul = document.getElementById('projList');
-    let li = document.getElementById(`${currentProjId}`)
+    let li = document.getElementById(`${currentProjId}`);
     ul.removeChild(li);
     projects.splice(i, 1);
     updateLocalStorage();

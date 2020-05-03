@@ -9,6 +9,7 @@ const newProjBtn = document.getElementById('newProjBtn');
 const projCreateBtn = document.getElementById('projCreateBtn');
 const deleteProjBtn = document.getElementById('deleteProj');
 const projList = document.getElementById('projList');
+const projName = document.getElementById('currentProj');
 const projLinks = document.getElementsByTagName('a');
 let projects;
 let currentProj;
@@ -37,7 +38,7 @@ function updateItemList(item) {
     ul = projList;
     li.innerHTML = `
   <a href="#" id="${item.uid}">${item.name}</a>`;
-  setProjLinkListeners();
+    setProjLinkListeners();
   } else {
     ul = taskList;
     li.className = 'task';
@@ -63,7 +64,7 @@ function fetchProjects() {
     let ul = document.getElementById('projList');
     projects.forEach((project) => {
       let li = document.createElement('li');
-      li.setAttribute('id', `${project.uid}`)
+      li.setAttribute('id', `${project.uid}`);
       li.innerHTML = `
       <a href="#" id="${project.uid}">${project.name}</a>`;
       ul.appendChild(li);
@@ -82,6 +83,8 @@ function setCurrentProj() {
 function setProjectPage() {
   let projTitle = document.getElementById('currentProj');
   projTitle.innerHTML = `<h3>${currentProj.name}</h3>`;
+  let projDesc = document.getElementById('currentProjDesc');
+  projDesc.textContent = currentProj.description;
 }
 
 function loadProject() {
@@ -105,13 +108,13 @@ function setProjLinkListeners() {
   }
 }
 
-newProjBtn.addEventListener('click', event => {
-  toggleForm(projForm)});
+newProjBtn.addEventListener('click', (event) => {
+  toggleForm(projForm);
+});
 projCreateBtn.addEventListener('click', createProject);
 deleteProjBtn.addEventListener('click', deleteProject);
 
-
-//Task-specific actions 
+//Task-specific actions
 
 function fetchTasks() {
   let ul = document.getElementById('taskList');
@@ -126,34 +129,49 @@ function fetchTasks() {
       li.className = 'taskComplete';
     }
     li.innerHTML = `
-    <input type="checkbox" class="checkbox" id=${task.uid} ${isChecked}>${task.name} - ${task.priority} - ${task.dueDate} <button id="${task.uid}" class="deleteTaskBtn">X</button>`;
+    <input type="checkbox" class="checkbox" id=${task.uid} ${isChecked}> ${task.name} - ${task.priority} - ${task.dueDate} <button id="${task.uid}" class="deleteTaskBtn">X</button>`;
     ul.appendChild(li);
   });
 }
 
 // Note: can get all buttons in the variable and then use buttons.forEach (btn => {
-  // btn.addEventListener('click', function)})
-  function setCheckboxListeners() {
-    for (let i = 0; i < checkboxes.length; i++) {
-      checkboxes[i].addEventListener('click', toggleTaskComplete);
-    }
+// btn.addEventListener('click', function)})
+function setCheckboxListeners() {
+  for (let i = 0; i < checkboxes.length; i++) {
+    checkboxes[i].addEventListener('click', toggleTaskComplete);
   }
-  
-  function setDeleteTaskListeners() {
-    for (let i = 0; i < deleteTaskBtns.length; i++) {
-      deleteTaskBtns[i].addEventListener('click', deleteTask);
-    }
+}
+
+function setDeleteTaskListeners() {
+  for (let i = 0; i < deleteTaskBtns.length; i++) {
+    deleteTaskBtns[i].addEventListener('click', deleteTask);
   }
-  
-  function clearTasksList() {
-    let ul = document.getElementById('taskList');
-    ul.innerHTML = '';
-  }
-  
-  newTaskBtn.addEventListener('click', event => {
-    toggleForm(taskForm)});
-  taskCreateBtn.addEventListener('click', createTask);
+}
+
+function clearTasksList() {
+  let ul = document.getElementById('taskList');
+  ul.innerHTML = '';
+}
+
+newTaskBtn.addEventListener('click', (event) => {
+  toggleForm(taskForm);
+});
+taskCreateBtn.addEventListener('click', createTask);
+
+projName.addEventListener('blur', editProject);
+
+function projDetailsListeners() {
+  const projDetails = [...document.getElementById('projectDetails').children];
+  projDetails.forEach( item => {
+    item.addEventListener('blur', editProject);
+  })
+}
+
+// projDetails.addEventListener('blur', event => {
+//   event.target.closest('span').editProject;
+// });
 
 window.onload = fetchProjects();
 window.onload = setProjLinkListeners();
+window.onload = projDetailsListeners();
 window.onload = showFirstProject();
