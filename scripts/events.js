@@ -10,7 +10,7 @@ const projCreateBtn = document.getElementById('projCreateBtn');
 const deleteProjBtn = document.getElementById('deleteProj');
 const projList = document.getElementById('projList');
 const projName = document.getElementById('currentProj');
-const projLinks = document.getElementsByTagName('a');
+const projLinks = document.getElementById('projList').childNodes;
 let projects;
 let currentProj;
 let currentProjIndex;
@@ -38,14 +38,15 @@ function updateItemList(item) {
     ul = projList;
     li.innerHTML = `
   <a href="#" id="${item.uid}">${item.name}</a>`;
+    ul.appendChild(li);
     setProjLinkListeners();
   } else {
     ul = taskList;
     li.className = 'task';
     li.innerHTML = `
     <input type="checkbox" class="checkbox" id=${item.uid}>${item.name} - ${item.priority} <button id="${item.uid}" class="deleteTaskBtn">X</button>`;
+    ul.appendChild(li);
   }
-  ul.appendChild(li);
 }
 
 function updateLocalStorage() {
@@ -84,7 +85,9 @@ function setProjectPage() {
   let projTitle = document.getElementById('currentProj');
   projTitle.innerHTML = `<h3>${currentProj.name}</h3>`;
   let projDesc = document.getElementById('currentProjDesc');
-  projDesc.textContent = currentProj.description;
+  currentProj.description === ''
+    ? (projDesc.textContent = 'Click to add description...')
+    : (projDesc.textContent = currentProj.description);
 }
 
 function loadProject() {
@@ -99,6 +102,10 @@ function loadProject() {
 
 function showFirstProject() {
   projList.firstElementChild.querySelector('a').click();
+}
+
+function showNewProject(id) {
+  document.getElementById(id).click();
 }
 
 function setProjLinkListeners() {
@@ -162,9 +169,9 @@ projName.addEventListener('blur', editProject);
 
 function projDetailsListeners() {
   const projDetails = [...document.getElementById('projectDetails').children];
-  projDetails.forEach( item => {
+  projDetails.forEach((item) => {
     item.addEventListener('blur', editProject);
-  })
+  });
 }
 
 // projDetails.addEventListener('blur', event => {

@@ -32,6 +32,7 @@ function createProject() {
   }
   updateItemList(project);
   toggleForm(projForm);
+  showNewProject(project.uid);
 }
 
 function updateProj() {
