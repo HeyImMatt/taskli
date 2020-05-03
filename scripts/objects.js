@@ -12,11 +12,9 @@ class ObjectHandler {
   uid
   constructor(
     name,
-    isComplete = false
   ) {
     this.uid = createUid();
     this.name = name;
-    this.isComplete = isComplete;
   }
 }
 

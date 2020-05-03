@@ -2,18 +2,13 @@ class Task extends ObjectHandler {
   constructor(
     name,
     isComplete,
-    description,
     notes,
-    dueDate,
     priority,
-    status,
   ) {
     super(...arguments);
-    this.description = description;
+    this.isComplete = false;
     this.notes = notes;
-    this.dueDate = dueDate;
     this.priority = priority;
-    this.status = status;
   }
 }
 
@@ -21,11 +16,8 @@ function createTask() {
   let task = new Task(
     document.getElementById('taskName').value,
     false,
-    document.getElementById('taskDescription').value,
     document.getElementById('taskNotes').value,
-    document.getElementById('taskDueDate').value,
     document.getElementById('taskPriority').value,
-    document.getElementById('taskStatus').value,
   );
   taskListArr.push(task);
   updateLocalStorage()
