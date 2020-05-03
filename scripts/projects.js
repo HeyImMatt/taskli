@@ -1,21 +1,12 @@
 class Project extends ObjectHandler {
   constructor(
     name,
-    isComplete,
     description,
-    notes,
     tasks,
-    dueDate,
-    priority,
-    status,
   ) {
     super(...arguments);
     this.description = description;
-    this.notes = notes;
     this.tasks = [];
-    this.dueDate = dueDate;
-    this.priority = priority;
-    this.status = status;
   }
 
   //not using the function below to create tasks probably. let's do that.
@@ -29,12 +20,7 @@ class Project extends ObjectHandler {
 function createProject() {
   let project = new Project(
     document.getElementById('projName').value,
-    false,
     document.getElementById('projDescription').value,
-    document.getElementById('projNotes').value,
-    document.getElementById('projDueDate').value,
-    document.getElementById('projPriority').value,
-    document.getElementById('projStatus').value,
   );
   if (projects === null) {
     window.localStorage.setItem('Projects List', JSON.stringify([project]));
