@@ -56,6 +56,7 @@ h2 {
 #sideNav h3 {
   align-self: center;
   text-decoration: underline;
+  margin-bottom: 0;
 }
 
 ul {
@@ -77,6 +78,13 @@ ul {
   color: var(--font-color);
   text-decoration: none;
   display: inline-flex;
+  align-self: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#quickAddProj {
+  display: inline-flexbox;
   align-self: center;
   margin-left: auto;
   margin-right: auto;

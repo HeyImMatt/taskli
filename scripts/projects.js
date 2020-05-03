@@ -1,9 +1,5 @@
 class Project extends ObjectHandler {
-  constructor(
-    name,
-    description,
-    tasks,
-  ) {
+  constructor(name, description, tasks) {
     super(...arguments);
     this.description = description;
     this.tasks = [];
@@ -18,21 +14,22 @@ class Project extends ObjectHandler {
 }
 
 function createProject() {
-  let project = new Project(
-    document.getElementById('projName').value,
-    document.getElementById('projDescription').value,
-  );
-  if (projects === null) {
-    window.localStorage.setItem('Projects List', JSON.stringify([project]));
+  if (projNameField.value === '') {
+    document.getElementById('newProjBtn').click();
   } else {
-    let arr = [...projects, project];
-    window.localStorage.removeItem('Projects List');
-    window.localStorage.setItem('Projects List', JSON.stringify(arr));
-    projects = JSON.parse(window.localStorage.getItem('Projects List'));
+    let project = new Project(projNameField.value, '');
+    if (projects === null) {
+      window.localStorage.setItem('Projects List', JSON.stringify([project]));
+    } else {
+      let arr = [...projects, project];
+      window.localStorage.removeItem('Projects List');
+      window.localStorage.setItem('Projects List', JSON.stringify(arr));
+      projects = JSON.parse(window.localStorage.getItem('Projects List'));
+    }
+    updateItemList(project);
+    showNewProject(project.uid);
+    projNameField.value = '';
   }
-  updateItemList(project);
-  toggleForm(projForm);
-  showNewProject(project.uid);
 }
 
 function updateProj() {
