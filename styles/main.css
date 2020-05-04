@@ -7,11 +7,21 @@
   --btn-font-color: #f9faf8;
   --bg-color: #f9faf8;
   --nav-color: #1d3352;
+  --green-color: #36c971;
+  --orange-color: #c96a36;
+  --red-color: #c94536;
+  font-family: 'Raleway', sans-serif;
+}
+
+button {
+  font-family: 'Raleway', sans-serif;
+  font-size: inherit;
+  border-radius: 10px;
+  outline: none;
 }
 
 body {
   padding: 15px;
-  font-family: 'Raleway', sans-serif;
   color: var(--font-color);
   background-color: var(--bg-color);
 }
@@ -88,6 +98,8 @@ ul {
   align-self: center;
   margin-left: auto;
   margin-right: auto;
+  height: 25px;
+  margin-bottom: 10px;
 }
 
 #newProjBtn {
@@ -100,7 +112,7 @@ ul {
   color: var(--btn-font-color);
   border-radius: 10px;
   height: 30px;
-  width: 150px;
+  width: 140px;
   cursor: pointer;
 }
 
@@ -110,7 +122,6 @@ ul {
   background-repeat: no-repeat;
   background-size: contain;
   border: transparent;
-  outline: none;
   height: 16px;
   width: 16px;
   margin-right: 6px;
@@ -145,7 +156,7 @@ ul {
   color: var(--btn-font-color);
   border-radius: 10px;
   height: 30px;
-  width: 150px;
+  width: 100px;
   outline: none;
   cursor: pointer;
 }
@@ -167,6 +178,64 @@ ul {
   text-decoration: none;
 }
 
+.task li {
+  display: flex;
+}
+
 .taskComplete {
   text-decoration: line-through;
+}
+
+#newTaskBtn {
+  display: inline-flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  align-self: center;
+  background-color: var(--primary-color-dark);
+  color: var(--btn-font-color);
+  height: 30px;
+  width: 140px;
+  cursor: pointer;
+}
+
+#newTaskBtn img {
+  margin-right: 5px;
+}
+
+#newTaskForm {
+display: flex;
+margin-bottom: 20px;
+}
+
+#taskPriority img {
+  size: 10px;
+}
+
+#taskCreateBtn {
+  display: inline-flex;
+  margin-top: 15px;
+  margin-right: 10px;
+  background-image: url(../assets/addcirclegreen.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: transparent;
+  height: 30px;
+  width: 30px;
+  cursor: pointer;
+}
+
+.deleteTaskBtn {
+  display: inline-flex;
+  margin: auto;
+  margin-left: 5px;
+  background-image: url(../assets/removecirclered.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  background-size: contain;
+  border: transparent;
+  height: 16px;
+  width: 16px;
+  cursor: pointer;
 }
