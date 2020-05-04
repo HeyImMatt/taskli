@@ -24,13 +24,14 @@
     <div id="sideNav">
       <h3>Projects</h3>
       <ul id="projList"></ul>
-      <span id="quickAddProj" style="display: none;"><input type="text" id="projNameField"  placeholder="Project Name..."><br><br></span>
+      <span id="quickAddProj" style="display: none;"><input type="text" id="projNameField"
+          placeholder="Project Name..."><br><br></span>
       <span id="newProjBtn"><button></button> New Project</span>
     </div>
     <div id="projectContent">
       <div id="projectHeader">
         <span id="currentProj" contenteditable="true">Project Page</span>
-        <span id="deleteProj"><button id="deleteProjBtn"></button> Delete Project</span>
+        <span id="deleteProj"><button id="deleteProjBtn"></button> Delete</span>
       </div>
       <div id="projectDetails">
         <span id="currentProjDesc" contenteditable="true" class="defaultText">Click to add description...</span>
@@ -38,25 +39,27 @@
       <div id="taskContainer">
         <ul id="taskList">Tasks<br><br></ul>
       </div>
-      <button id="newTaskBtn">Add New Task</button>
-      <br>
-      <br>
       <form id="newTaskForm" style="display: none">
-        <label for="taskName">Task Name</label><br>
-        <input type="text" id="taskName"><br>
-        <label for="taskNotes">Task Notes</label><br>
-        <textarea id="taskNotes"></textarea><br>
-        <label for="taskPriority">Priority</label>
-        <select id="taskPriority">
-          <option>Urgent</option>
-          <option>High</option>
-          <option>Medium</option>
-          <option>Low</option>
-        </select><br>
-        <br>
-        <br>
-        <button type="reset" id="taskCreateBtn">Create</button>
+        <button type="reset" id="taskCreateBtn"></button>
+        <span id="taskPriorityBlock">
+          <label for="taskPriority">Priority</label>
+          <select id="taskPriority">
+            <option>Urgent</option>
+            <option>High</option>
+            <option>Medium</option>
+            <option>Low</option>
+          </select>
+        </span>
+        <span id="taskNameBlock">
+          <label for="taskName">Task Name</label>
+          <input type="text" id="taskName">
+        </span>
+        <span id="taskNotesBlock">
+          <label for="taskNotes">Task Notes</label>
+          <textarea id="taskNotes"></textarea>
+        </span>
       </form>
+      <button id="newTaskBtn"><img src="assets/pencilwhite.svg">New Task</button>
     </div>
   </div>
 </body>

@@ -24,7 +24,7 @@ function clearForms() {
 
 function toggleForm(form) {
   if (form.style.display === 'none') {
-    form.style.display = 'block';
+    form.style.display = 'flex';
   } else {
     form.style.display = 'none';
   }
@@ -44,7 +44,7 @@ function updateItemList(item) {
     ul = taskList;
     li.className = 'task';
     li.innerHTML = `
-    <input type="checkbox" class="checkbox" id=${item.uid}>${item.name} - ${item.priority} <button id="${item.uid}" class="deleteTaskBtn">X</button>`;
+    <input type="checkbox" class="checkbox" id=${item.uid}> ${task.priority} - ${task.name} <button id="${item.uid}" class="deleteTaskBtn"></button>`;
     ul.appendChild(li);
   }
 }
@@ -149,7 +149,7 @@ function fetchTasks() {
       li.className = 'taskComplete';
     }
     li.innerHTML = `
-    <input type="checkbox" class="checkbox" id=${task.uid} ${isChecked}> ${task.name} - ${task.priority} <button id="${task.uid}" class="deleteTaskBtn">X</button>`;
+    <input type="checkbox" class="checkbox" id=${task.uid} ${isChecked}> ${task.priority} - ${task.name} <button id="${task.uid}" class="deleteTaskBtn"></button>`;
     ul.appendChild(li);
   });
 }
