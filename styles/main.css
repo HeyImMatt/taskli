@@ -81,7 +81,12 @@ ul {
 }
 
 #sideNav li:hover {
-  background-color: darkgray;
+  background-color: lightgray;
+  cursor: pointer;
+}
+
+.selected {
+  background-color: var(--primary-color);
 }
 
 #sideNav a {
