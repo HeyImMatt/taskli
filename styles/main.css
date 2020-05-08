@@ -211,7 +211,7 @@ ul {
 
 .task label {
   display: inline-flex;
-  width: 95%;
+  width: 93%;
 }
 
 .taskComplete {
@@ -295,8 +295,6 @@ ul {
 
 .deleteTaskBtn {
   display: inline-flex;
-  align-self: flex-end;
-  justify-self: flex-end;
   margin-top: auto;
   margin-bottom: auto;
   background-image: url(../assets/removecirclered.svg);
