@@ -36,7 +36,8 @@ function deleteTask() {
   ) {
     let ul = document.getElementById('taskList');
     let li = document.getElementById(`${this.id}`);
-    ul.removeChild(li);
+    let div = li.closest('div');
+    ul.removeChild(div);
     taskListArr.splice(i, 1);
     updateProj()
   }

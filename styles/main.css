@@ -181,17 +181,30 @@ ul {
 
 #taskItem {
 display: flex;
-align-content: stretch;
+align-content: space-between;
+border-style: solid;
+border-color: lightgray;
+border-radius:8px;
+margin-top: 5px;
+margin-bottom: 5px;
+width: 100%;
+}
+
+#taskItem input[type=checkbox]text {
+  display: inline-flex;
+  margin-left: auto;
+  margin-right: auto;
 }
 
 #taskNotes {
+  align-self: flex-start;
   color: gray;
 }
 
 .task {
   text-decoration: none;
   display: list-item;
-  width: auto;
+  width: 100%;
   padding: 5px;
 }
 
@@ -218,6 +231,12 @@ align-content: stretch;
 
 #newTaskForm {
 display: flex;
+width: 100%;
+border-style: solid;
+border-color: lightgray;
+border-radius: 8px;
+padding: 5px 0px 5px 0px;
+margin-top: 5px;
 margin-bottom: 20px;
 }
 
@@ -240,10 +259,9 @@ margin-bottom: 20px;
 }
 
 .deleteTaskBtn {
-  display: inline-flex;
-  align-self: flex-end;
-  margin: auto;
-  margin-left: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
+  margin-left: auto;
   background-image: url(../assets/removecirclered.svg);
   background-color: transparent;
   background-repeat: no-repeat;
