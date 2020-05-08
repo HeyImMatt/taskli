@@ -183,6 +183,7 @@ ul {
   display: flex;
   align-content: space-between;
   border-style: solid;
+  border-width: 2px;
   border-color: lightgray;
   border-radius: 8px;
   margin-top: 5px;
@@ -236,6 +237,7 @@ ul {
   display: flex;
   width: 99%;
   border-style: solid;
+  border-width: 2px;
   border-color: lightgray;
   border-radius: 8px;
   padding: 5px 0px 5px 10px;
@@ -252,18 +254,29 @@ ul {
 }
 
 #taskNameBlock {
+  width: 40%;
   margin-left: auto;
   margin-right: auto;
 }
 
+#taskName {
+  width: 100%;
+}
+
 #taskNotesBlock {
+  width: 30%;
   margin-left: auto;
   margin-right: auto;
+}
+
+#taskNotes {
+  width: 100%;
 }
 
 #taskCreateBtn {
   display: inline-flex;
   margin: auto;
+  margin-right: 1%;
   background-color: var(--green-color);
   color: var(--btn-font-color);
   height: 30px;
