@@ -88,6 +88,13 @@ function setProjectPage() {
   currentProj.description === ''
     ? (projDesc.textContent = 'Click to add description...')
     : (projDesc.textContent = currentProj.description);
+    projLinks.forEach((item) => {
+      if (item.id === currentProjId) {
+        item.className = 'selected';
+      } else {
+        item.className = '';
+      }
+    })
 }
 
 function loadProject() {
