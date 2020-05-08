@@ -49,7 +49,7 @@ function updateItemList(item) {
     <input type="checkbox" class="checkbox" id=${item.uid}> ${item.priority} - ${item.name} <button id="${item.uid}" class="deleteTaskBtn"></button>
     ${item.notes ? 
       `<br>
-      <span id="taskNotes">${item.notes}</span>` : '' }`;
+      <span id="savedTaskNotes">${item.notes}</span>` : '' }`;
     ul.appendChild(div);
     div.appendChild(li);
   }
@@ -167,7 +167,7 @@ function fetchTasks() {
     <input type="checkbox" class="checkbox" id=${task.uid} ${isChecked}> ${task.priority} - ${task.name} <button id="${task.uid}" class="deleteTaskBtn"></button>
     ${task.notes ? 
     `<br>
-    <span id="taskNotes">${task.notes}</span>` : '' }`;
+    <span id="savedTaskNotes">${task.notes}</span>` : '' }`;
     ul.appendChild(div);
     div.appendChild(li);
   });
@@ -194,6 +194,9 @@ function clearTasksList() {
 
 newTaskBtn.addEventListener('click', (event) => {
   toggleForm(taskForm);
+  if (newTaskBtn.textContent === 'New Task') {
+    newTaskBtn.innerHTML = `<img src="assets/xwhite.svg">Cancel`
+  } else newTaskBtn.innerHTML = `<img src="assets/pencilwhite.svg">New Task`
 });
 taskCreateBtn.addEventListener('click', createTask);
 

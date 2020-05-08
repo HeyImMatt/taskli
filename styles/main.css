@@ -196,7 +196,7 @@ width: 100%;
   margin-right: auto;
 }
 
-#taskNotes {
+#savedTaskNotes {
   align-self: flex-start;
   color: gray;
 }
@@ -210,6 +210,9 @@ width: 100%;
 
 .taskComplete {
   text-decoration: line-through;
+  display: list-item;
+  width: 100%;
+  padding: 5px;
 }
 
 #newTaskBtn {
@@ -231,11 +234,11 @@ width: 100%;
 
 #newTaskForm {
 display: flex;
-width: 100%;
+width: 99%;
 border-style: solid;
 border-color: lightgray;
 border-radius: 8px;
-padding: 5px 0px 5px 0px;
+padding: 5px 0px 5px 10px;
 margin-top: 5px;
 margin-bottom: 20px;
 }
@@ -244,24 +247,43 @@ margin-bottom: 20px;
   size: 10px;
 }
 
+#taskPriorityBlock {
+  margin-right: auto;
+}
+
+#taskNameBlock {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#taskNotesBlock {
+  margin-left: auto;
+  margin-right: auto;
+}
+
 #taskCreateBtn {
   display: inline-flex;
-  margin-top: 15px;
+  margin-top: auto;
+  margin-bottom: auto;
   margin-right: 10px;
-  background-image: url(../assets/addcirclegreen.svg);
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-size: contain;
-  border: transparent;
+  margin-left: auto;
+  background-color: var(--green-color);
+  color: var(--btn-font-color);
   height: 30px;
-  width: 30px;
+  width: 80px;
   cursor: pointer;
 }
 
+#taskCreateBtn img {
+  margin-right: 5px;
+}
+
 .deleteTaskBtn {
+  display: inline-flex;
+  align-self: flex-end;
+  justify-self: flex-end;
   margin-top: auto;
   margin-bottom: auto;
-  margin-left: auto;
   background-image: url(../assets/removecirclered.svg);
   background-color: transparent;
   background-repeat: no-repeat;

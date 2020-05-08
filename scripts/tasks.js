@@ -23,6 +23,7 @@ function createTask() {
   updateLocalStorage()
   updateItemList(task);
   toggleForm(taskForm);
+  newTaskBtn.innerHTML = `<img src="assets/pencilwhite.svg">New Task`
   setCheckboxListeners();
   setDeleteTaskListeners();
 }
