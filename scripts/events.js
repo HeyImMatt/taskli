@@ -46,9 +46,9 @@ function updateItemList(item) {
     ul = taskList;
     li.className = 'task';
     li.innerHTML = `
-    <input type="checkbox" class="checkbox" id=${item.uid}> ${
+    <input type="checkbox" class="checkbox" id=${item.uid}><label for=${item.uid}> ${
       item.priority
-    } - ${item.name} <button id="${item.uid}" class="deleteTaskBtn"></button>
+    } - ${item.name} </label><button id="${item.uid}" class="deleteTaskBtn"></button>
     ${
       item.notes
         ? `<br>
@@ -169,9 +169,9 @@ function fetchTasks() {
       li.className = 'taskComplete';
     }
     li.innerHTML = `
-    <input type="checkbox" class="checkbox" id=${task.uid} ${isChecked}> ${
+    <input type="checkbox" class="checkbox" id=${task.uid} ${isChecked}><label for=${task.uid}>${
       task.priority
-    } - ${task.name} <button id="${task.uid}" class="deleteTaskBtn"></button>
+    } - ${task.name} </label><button id="${task.uid}" class="deleteTaskBtn"></button>
     ${
       task.notes
         ? `<br>

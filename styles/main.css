@@ -209,6 +209,11 @@ ul {
   padding: 5px;
 }
 
+.task label {
+  display: inline-flex;
+  width: 95%;
+}
+
 .taskComplete {
   text-decoration: line-through;
   display: list-item;
