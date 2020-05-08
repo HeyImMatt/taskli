@@ -151,7 +151,7 @@ ul {
   margin-top: 3px;
 }
 
-#deleteProj{
+#deleteProj {
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
@@ -180,17 +180,17 @@ ul {
 }
 
 #taskItem {
-display: flex;
-align-content: space-between;
-border-style: solid;
-border-color: lightgray;
-border-radius:8px;
-margin-top: 5px;
-margin-bottom: 5px;
-width: 100%;
+  display: flex;
+  align-content: space-between;
+  border-style: solid;
+  border-color: lightgray;
+  border-radius: 8px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 100%;
 }
 
-#taskItem input[type=checkbox]text {
+#taskItem input[type='checkbox']text {
   display: inline-flex;
   margin-left: auto;
   margin-right: auto;
@@ -233,14 +233,14 @@ width: 100%;
 }
 
 #newTaskForm {
-display: flex;
-width: 99%;
-border-style: solid;
-border-color: lightgray;
-border-radius: 8px;
-padding: 5px 0px 5px 10px;
-margin-top: 5px;
-margin-bottom: 20px;
+  display: flex;
+  width: 99%;
+  border-style: solid;
+  border-color: lightgray;
+  border-radius: 8px;
+  padding: 5px 0px 5px 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 
 #taskPriority img {
@@ -263,14 +263,11 @@ margin-bottom: 20px;
 
 #taskCreateBtn {
   display: inline-flex;
-  margin-top: auto;
-  margin-bottom: auto;
-  margin-right: 10px;
-  margin-left: auto;
+  margin: auto;
   background-color: var(--green-color);
   color: var(--btn-font-color);
   height: 30px;
-  width: 80px;
+  width: 75px;
   cursor: pointer;
 }
 
