@@ -179,12 +179,20 @@ ul {
   cursor: pointer;
 }
 
-.task {
-  text-decoration: none;
+#taskItem {
+display: flex;
+align-content: stretch;
 }
 
-.task li {
-  display: flex;
+#taskNotes {
+  color: gray;
+}
+
+.task {
+  text-decoration: none;
+  display: list-item;
+  width: auto;
+  padding: 5px;
 }
 
 .taskComplete {
@@ -233,6 +241,7 @@ margin-bottom: 20px;
 
 .deleteTaskBtn {
   display: inline-flex;
+  align-self: flex-end;
   margin: auto;
   margin-left: 5px;
   background-image: url(../assets/removecirclered.svg);

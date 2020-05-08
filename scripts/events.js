@@ -41,11 +41,17 @@ function updateItemList(item) {
     ul.appendChild(li);
     setProjLinkListeners();
   } else {
+    let div = document.createElement('div')
+    div.id='taskItem';
     ul = taskList;
     li.className = 'task';
     li.innerHTML = `
-    <input type="checkbox" class="checkbox" id=${item.uid}> ${task.priority} - ${task.name} <button id="${item.uid}" class="deleteTaskBtn"></button>`;
-    ul.appendChild(li);
+    <input type="checkbox" class="checkbox" id=${item.uid}> ${item.priority} - ${item.name} <button id="${item.uid}" class="deleteTaskBtn"></button>
+    ${item.notes ? 
+      `<br>
+      <span id="taskNotes">${item.notes}</span>` : '' }`;
+    ul.appendChild(div);
+    div.appendChild(li);
   }
 }
 
@@ -146,6 +152,8 @@ projNameField.addEventListener('keyup', (event) => {
 function fetchTasks() {
   let ul = document.getElementById('taskList');
   taskListArr.forEach((task) => {
+    let div = document.createElement('div')
+    div.id='taskItem';
     let li = document.createElement('li');
     li.id = task.uid;
     let isChecked = 'checked';
@@ -156,8 +164,12 @@ function fetchTasks() {
       li.className = 'taskComplete';
     }
     li.innerHTML = `
-    <input type="checkbox" class="checkbox" id=${task.uid} ${isChecked}> ${task.priority} - ${task.name} <button id="${task.uid}" class="deleteTaskBtn"></button>`;
-    ul.appendChild(li);
+    <input type="checkbox" class="checkbox" id=${task.uid} ${isChecked}> ${task.priority} - ${task.name} <button id="${task.uid}" class="deleteTaskBtn"></button>
+    ${task.notes ? 
+    `<br>
+    <span id="taskNotes">${task.notes}</span>` : '' }`;
+    ul.appendChild(div);
+    div.appendChild(li);
   });
 }
 
