@@ -121,10 +121,13 @@ function loadProject() {
 }
 
 function showFirstProject() {
-    projList.firstElementChild.querySelector('a').click();
+  if (projects.length === 0) {
+    document.getElementById('projectContent').style = 'display: none;';
+  } else projList.firstElementChild.querySelector('a').click();
 }
 
 function showNewProject(id) {
+  document.getElementById('projectContent').style = 'display: flex;';
   document.getElementById(id).click();
 }
 
