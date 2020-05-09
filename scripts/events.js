@@ -46,9 +46,11 @@ function updateItemList(item) {
     ul = taskList;
     li.className = 'task';
     li.innerHTML = `
-    <input type="checkbox" class="checkbox" id=${item.uid}><label for=${item.uid}> ${
-      item.priority
-    } - ${item.name} </label><button id="${item.uid}" class="deleteTaskBtn"></button>
+    <input type="checkbox" class="checkbox" id=${item.uid}><label for=${
+      item.uid
+    }> ${item.priority} - ${item.name} </label><button id="${
+      item.uid
+    }" class="deleteTaskBtn"></button>
     ${
       item.notes
         ? `<br>
@@ -98,7 +100,7 @@ function setProjectPage() {
   let projDesc = document.getElementById('currentProjDesc');
   currentProj.description === ''
     ? (projDesc.textContent = 'Click to add description...')
-    : (projDesc.textContent = currentProj.description);
+    : (projDesc.innerHTML = currentProj.description);
   projLinks.forEach((item) => {
     if (item.id === currentProjId) {
       item.className = 'selected';
@@ -119,10 +121,13 @@ function loadProject() {
 }
 
 function showFirstProject() {
-  projList.firstElementChild.querySelector('a').click();
+  if (projects.length === 0) {
+    document.getElementById('projectContent').style = 'display: none;';
+  } else projList.firstElementChild.querySelector('a').click();
 }
 
 function showNewProject(id) {
+  document.getElementById('projectContent').style = 'display: flex;';
   document.getElementById(id).click();
 }
 
@@ -169,9 +174,11 @@ function fetchTasks() {
       li.className = 'taskComplete';
     }
     li.innerHTML = `
-    <input type="checkbox" class="checkbox" id=${task.uid} ${isChecked}><label for=${task.uid}>${
-      task.priority
-    } - ${task.name} </label><button id="${task.uid}" class="deleteTaskBtn"></button>
+    <input type="checkbox" class="checkbox" id=${
+      task.uid
+    } ${isChecked}><label for=${task.uid}>${task.priority} - ${
+      task.name
+    } </label><button id="${task.uid}" class="deleteTaskBtn"></button>
     ${
       task.notes
         ? `<br>
@@ -211,6 +218,7 @@ newTaskBtn.addEventListener('click', (event) => {
 taskCreateBtn.addEventListener('click', createTask);
 
 window.onload = fetchProjects();
+window.onload = setDefaultProject();
 window.onload = setProjLinkListeners();
 window.onload = projDetailsListeners();
 window.onload = showFirstProject();
