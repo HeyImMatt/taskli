@@ -198,8 +198,9 @@ ul {
 }
 
 #savedTaskNotes {
-  align-self: flex-start;
   color: gray;
+  display: flex;
+  max-width: 90%;
 }
 
 .task {

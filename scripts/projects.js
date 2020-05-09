@@ -13,6 +13,56 @@ class Project extends ObjectHandler {
   }
 }
 
+function setDefaultProject() {
+  if (projects === null) {
+    let defaultProject = new Project(
+      'Getting Started',
+      `Welcome to Taskli!<br>
+      Learn how to use Taskli by completing the tasks below.
+      <p style="font-size: 12px; max-width: 60%">Important note: This is for demonstration purposes only. Taskli is currently using local storage in your browser to save information so it may not persist if you close your browser, navigate to another website, etc.</p>`,
+    );
+    defaultProject.tasks.push(
+      new Task(
+        'To get started, click the New Project button',
+        false,
+        'Create projects that you want to assign tasks to like Weekend Chores, Vacation Prep, or Learn to Code.',
+        'High',
+      ),
+      new Task(
+        'Add tasks by clicking the New Task button',
+        false,
+        'Tasks can have a priority, a name, and notes.',
+        'High',
+      ),
+      new Task(
+        'Mark tasks as complete by clicking the checkbox',
+        false,
+        'Tasks that are complete will be crossed out, but will not be removed from your project.',
+        'High',
+      ),
+      new Task(
+        'Delete tasks by clicking the red "remove" circle icon',
+        false,
+        'This permanently deletes a task from your project.',
+        'Medium',
+      ),
+      new Task(
+        'Delete a project by clicking the Delete button',
+        false,
+        'This permanently deletes the project. Feel free to delete this project when you are ready to get started!',
+        'Low',
+      ),
+    ),
+      console.log(defaultProject);
+    window.localStorage.setItem(
+      'Projects List',
+      JSON.stringify([defaultProject]),
+    );
+    updateItemList(defaultProject);
+    showNewProject(defaultProject.uid);
+  }
+}
+
 function createProject() {
   if (projNameField.value === '') {
     document.getElementById('newProjBtn').click();
@@ -60,6 +110,8 @@ function deleteProject() {
     ul.removeChild(li);
     projects.splice(i, 1);
     updateLocalStorage();
-    showFirstProject();
+    if (projects != null) {
+      showFirstProject();
+    }
   }
 }
