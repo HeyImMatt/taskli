@@ -221,6 +221,11 @@ ul {
   padding: 5px;
 }
 
+.taskComplete label {
+  display: inline-flex;
+  width: 93%;
+}
+
 #newTaskBtn {
   display: inline-flex;
   flex-direction: row;
@@ -259,9 +264,12 @@ ul {
 }
 
 #taskNameBlock {
-  width: 40%;
+  width: 35%;
   margin-left: auto;
   margin-right: auto;
+}
+#taskNameBlock input[type="text"] {
+  border-radius: 5px;
 }
 
 #taskName {
@@ -269,9 +277,16 @@ ul {
 }
 
 #taskNotesBlock {
-  width: 30%;
+  width: 35%;
   margin-left: auto;
   margin-right: auto;
+}
+
+#taskNotesBlock textarea {
+  border-radius: 5px;
+  border-style: inset;
+  border-width: 2px;
+  height: 12px;
 }
 
 #taskNotes {
