@@ -40,9 +40,8 @@
         <ul id="taskList">Tasks<br><br></ul>
       </div>
       <form id="newTaskForm" style="display: none">
-        <button type="reset" id="taskCreateBtn"></button>
         <span id="taskPriorityBlock">
-          <label for="taskPriority">Priority</label>
+          <label for="taskPriority">Priority</label><br>
           <select id="taskPriority">
             <option>Urgent</option>
             <option>High</option>
@@ -51,13 +50,14 @@
           </select>
         </span>
         <span id="taskNameBlock">
-          <label for="taskName">Task Name</label>
+          <label for="taskName">Task Name</label><br>
           <input type="text" id="taskName">
         </span>
         <span id="taskNotesBlock">
-          <label for="taskNotes">Task Notes</label>
+          <label for="taskNotes">Task Notes</label><br>
           <textarea id="taskNotes"></textarea>
         </span>
+        <button type="reset" id="taskCreateBtn"><img src="assets/addicon.svg">Add</button>
       </form>
       <button id="newTaskBtn"><img src="assets/pencilwhite.svg">New Task</button>
     </div>

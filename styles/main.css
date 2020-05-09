@@ -151,7 +151,7 @@ ul {
   margin-top: 3px;
 }
 
-#deleteProj{
+#deleteProj {
   display: inline-flex;
   flex-direction: row;
   justify-content: center;
@@ -179,16 +179,51 @@ ul {
   cursor: pointer;
 }
 
-.task {
-  text-decoration: none;
+#taskItem {
+  display: flex;
+  align-content: space-between;
+  border-style: solid;
+  border-width: 2px;
+  border-color: lightgray;
+  border-radius: 8px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+  width: 100%;
 }
 
-.task li {
-  display: flex;
+#taskItem input[type='checkbox']text {
+  display: inline-flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#savedTaskNotes {
+  align-self: flex-start;
+  color: gray;
+}
+
+.task {
+  text-decoration: none;
+  display: list-item;
+  width: 100%;
+  padding: 5px;
+}
+
+.task label {
+  display: inline-flex;
+  width: 93%;
 }
 
 .taskComplete {
   text-decoration: line-through;
+  display: list-item;
+  width: 100%;
+  padding: 5px;
+}
+
+.taskComplete label {
+  display: inline-flex;
+  width: 93%;
 }
 
 #newTaskBtn {
@@ -209,32 +244,74 @@ ul {
 }
 
 #newTaskForm {
-display: flex;
-margin-bottom: 20px;
+  display: flex;
+  width: 99%;
+  border-style: solid;
+  border-width: 2px;
+  border-color: lightgray;
+  border-radius: 8px;
+  padding: 5px 0px 5px 10px;
+  margin-top: 5px;
+  margin-bottom: 20px;
 }
 
 #taskPriority img {
   size: 10px;
 }
 
+#taskPriorityBlock {
+  margin-right: auto;
+}
+
+#taskNameBlock {
+  width: 35%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#taskNameBlock input[type="text"] {
+  border-radius: 5px;
+}
+
+#taskName {
+  width: 100%;
+}
+
+#taskNotesBlock {
+  width: 35%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+#taskNotesBlock textarea {
+  border-radius: 5px;
+  border-style: inset;
+  border-width: 2px;
+  height: 12px;
+}
+
+#taskNotes {
+  width: 100%;
+}
+
 #taskCreateBtn {
   display: inline-flex;
-  margin-top: 15px;
-  margin-right: 10px;
-  background-image: url(../assets/addcirclegreen.svg);
-  background-color: transparent;
-  background-repeat: no-repeat;
-  background-size: contain;
-  border: transparent;
+  margin: auto;
+  margin-right: 1%;
+  background-color: var(--green-color);
+  color: var(--btn-font-color);
   height: 30px;
-  width: 30px;
+  width: 75px;
   cursor: pointer;
+}
+
+#taskCreateBtn img {
+  margin-right: 5px;
 }
 
 .deleteTaskBtn {
   display: inline-flex;
-  margin: auto;
-  margin-left: 5px;
+  margin-top: auto;
+  margin-bottom: auto;
   background-image: url(../assets/removecirclered.svg);
   background-color: transparent;
   background-repeat: no-repeat;

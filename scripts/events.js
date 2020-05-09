@@ -41,11 +41,22 @@ function updateItemList(item) {
     ul.appendChild(li);
     setProjLinkListeners();
   } else {
+    let div = document.createElement('div');
+    div.id = 'taskItem';
     ul = taskList;
     li.className = 'task';
     li.innerHTML = `
-    <input type="checkbox" class="checkbox" id=${item.uid}> ${task.priority} - ${task.name} <button id="${item.uid}" class="deleteTaskBtn"></button>`;
-    ul.appendChild(li);
+    <input type="checkbox" class="checkbox" id=${item.uid}><label for=${item.uid}> ${
+      item.priority
+    } - ${item.name} </label><button id="${item.uid}" class="deleteTaskBtn"></button>
+    ${
+      item.notes
+        ? `<br>
+      <span id="savedTaskNotes">${item.notes}</span>`
+        : ''
+    }`;
+    ul.appendChild(div);
+    div.appendChild(li);
   }
 }
 
@@ -88,13 +99,13 @@ function setProjectPage() {
   currentProj.description === ''
     ? (projDesc.textContent = 'Click to add description...')
     : (projDesc.textContent = currentProj.description);
-    projLinks.forEach((item) => {
-      if (item.id === currentProjId) {
-        item.className = 'selected';
-      } else {
-        item.className = '';
-      }
-    })
+  projLinks.forEach((item) => {
+    if (item.id === currentProjId) {
+      item.className = 'selected';
+    } else {
+      item.className = '';
+    }
+  });
 }
 
 function loadProject() {
@@ -139,13 +150,15 @@ projNameField.addEventListener('keyup', (event) => {
   if (event.keyCode === 13) {
     createProject();
   }
-})
+});
 
 //Task-specific actions
 
 function fetchTasks() {
   let ul = document.getElementById('taskList');
   taskListArr.forEach((task) => {
+    let div = document.createElement('div');
+    div.id = 'taskItem';
     let li = document.createElement('li');
     li.id = task.uid;
     let isChecked = 'checked';
@@ -156,8 +169,17 @@ function fetchTasks() {
       li.className = 'taskComplete';
     }
     li.innerHTML = `
-    <input type="checkbox" class="checkbox" id=${task.uid} ${isChecked}> ${task.priority} - ${task.name} <button id="${task.uid}" class="deleteTaskBtn"></button>`;
-    ul.appendChild(li);
+    <input type="checkbox" class="checkbox" id=${task.uid} ${isChecked}><label for=${task.uid}>${
+      task.priority
+    } - ${task.name} </label><button id="${task.uid}" class="deleteTaskBtn"></button>
+    ${
+      task.notes
+        ? `<br>
+    <span id="savedTaskNotes">${task.notes}</span>`
+        : ''
+    }`;
+    ul.appendChild(div);
+    div.appendChild(li);
   });
 }
 
@@ -182,6 +204,9 @@ function clearTasksList() {
 
 newTaskBtn.addEventListener('click', (event) => {
   toggleForm(taskForm);
+  if (newTaskBtn.textContent === 'New Task') {
+    newTaskBtn.innerHTML = `<img src="assets/xwhite.svg">Cancel`;
+  } else newTaskBtn.innerHTML = `<img src="assets/pencilwhite.svg">New Task`;
 });
 taskCreateBtn.addEventListener('click', createTask);
 

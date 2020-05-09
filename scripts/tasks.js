@@ -1,10 +1,5 @@
 class Task extends ObjectHandler {
-  constructor(
-    name,
-    isComplete,
-    notes,
-    priority,
-  ) {
+  constructor(name, isComplete, notes, priority) {
     super(...arguments);
     this.isComplete = false;
     this.notes = notes;
@@ -20,9 +15,10 @@ function createTask() {
     document.getElementById('taskPriority').value,
   );
   taskListArr.push(task);
-  updateLocalStorage()
+  updateLocalStorage();
   updateItemList(task);
   toggleForm(taskForm);
+  newTaskBtn.innerHTML = `<img src="assets/pencilwhite.svg">New Task`;
   setCheckboxListeners();
   setDeleteTaskListeners();
 }
@@ -36,9 +32,10 @@ function deleteTask() {
   ) {
     let ul = document.getElementById('taskList');
     let li = document.getElementById(`${this.id}`);
-    ul.removeChild(li);
+    let div = li.closest('div');
+    ul.removeChild(div);
     taskListArr.splice(i, 1);
-    updateProj()
+    updateProj();
   }
 }
 
