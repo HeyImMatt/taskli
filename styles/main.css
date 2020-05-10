@@ -21,7 +21,6 @@ button {
 }
 
 body {
-  padding: 15px;
   color: var(--font-color);
   background-color: var(--bg-color);
 }
@@ -55,7 +54,7 @@ h2 {
   display: flex;
   flex-direction: column;
   min-width: 20%;
-  height: 500px;
+  min-height: 100%;
   background-color: #ececec;
   color: var(--font-color);
   font-family: 'Montserrat', sans-serif;
@@ -213,12 +212,11 @@ ul {
 .task label {
   display: inline-flex;
   order: 2;
-  width: 85%;
+  width: 95%
 }
 
 .task input[type='checkbox'] {
   display: inline-flex;
-  width: 2%;
   order: 1;
 }
 
@@ -226,7 +224,7 @@ ul {
   color: gray;
   display: inline-flex;
   order: 3;
-  width: 85%;
+  width: 100%;
 }
 
 .deleteTaskBtn {
