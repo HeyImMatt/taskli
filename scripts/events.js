@@ -169,6 +169,9 @@ function fetchTasks() {
     div.id = 'taskItem';
     let li = document.createElement('li');
     li.id = task.uid;
+    let button = document.createElement('button');
+    button.id = task.uid;
+    button.className = 'deleteTaskBtn'
     let isChecked = 'checked';
     if (task.isComplete == false) {
       li.className = 'task';
@@ -181,7 +184,7 @@ function fetchTasks() {
       task.uid
     } ${isChecked}><label for=${task.uid}>${task.priority} - ${
       task.name
-    } </label><button id="${task.uid}" class="deleteTaskBtn"></button>
+    } </label>
     ${
       task.notes
         ? `<br>
@@ -190,6 +193,7 @@ function fetchTasks() {
     }`;
     ul.appendChild(div);
     div.appendChild(li);
+    div.appendChild(button);
   });
 }
 
