@@ -147,6 +147,9 @@ function projDetailsListeners() {
 
 newProjBtn.addEventListener('click', (event) => {
   toggleForm(quickAddProj);
+  if (newProjBtn.textContent === ' New Project') {
+    newProjBtn.innerHTML = `<img src="assets/xwhite.svg"> Cancel`;
+  } else newProjBtn.innerHTML = `<img src="assets/addicon.svg"> New Project`;
 });
 deleteProjBtn.addEventListener('click', deleteProject);
 projName.addEventListener('blur', editProject);
