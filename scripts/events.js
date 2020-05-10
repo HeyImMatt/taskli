@@ -42,15 +42,16 @@ function updateItemList(item) {
     setProjLinkListeners();
   } else {
     let div = document.createElement('div');
-    div.id = 'taskItem';
+    let button = document.createElement('button');
     ul = taskList;
+    button.id = item.uid;
+    button.className = 'deleteTaskBtn';
+    div.id = 'taskItem';
     li.className = 'task';
     li.innerHTML = `
     <input type="checkbox" class="checkbox" id=${item.uid}><label for=${
       item.uid
-    }> ${item.priority} - ${item.name} </label><button id="${
-      item.uid
-    }" class="deleteTaskBtn"></button>
+    }> ${item.priority} - ${item.name} </label>
     ${
       item.notes
         ? `<br>
@@ -59,6 +60,7 @@ function updateItemList(item) {
     }`;
     ul.appendChild(div);
     div.appendChild(li);
+    div.appendChild(button);
   }
 }
 
@@ -171,7 +173,7 @@ function fetchTasks() {
     li.id = task.uid;
     let button = document.createElement('button');
     button.id = task.uid;
-    button.className = 'deleteTaskBtn'
+    button.className = 'deleteTaskBtn';
     let isChecked = 'checked';
     if (task.isComplete == false) {
       li.className = 'task';
