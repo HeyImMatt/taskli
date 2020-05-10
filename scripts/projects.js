@@ -19,7 +19,7 @@ function setDefaultProject() {
       'Getting Started',
       `Welcome to Taskli!<br>
       Learn how to use Taskli by completing the tasks below.
-      <p style="font-size: 12px; max-width: 90%">Important note: This is for demonstration purposes only. Taskli is currently using local storage in your browser to save information so it may not persist if you close your browser, navigate to another website, etc.</p>`,
+      <p>Important note: This is for demonstration purposes only. Taskli is currently using local storage in your browser to save information so it may not persist if you close your browser, navigate to another website, etc.</p>`,
     );
     defaultProject.tasks.push(
       new Task(
