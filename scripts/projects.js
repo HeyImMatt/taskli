@@ -9,7 +9,6 @@ class Project extends ObjectHandler {
   createTask() {
     let task = new Task(...arguments);
     this.tasks.push(task);
-    console.log(this.tasks);
   }
 }
 
@@ -53,7 +52,6 @@ function setDefaultProject() {
         'Low',
       ),
     ),
-      console.log(defaultProject);
     window.localStorage.setItem(
       'Projects List',
       JSON.stringify([defaultProject]),
@@ -88,13 +86,11 @@ function updateProj() {
 }
 
 function editProject() {
-  console.log(this.id);
   if (this.id == 'currentProj') {
     currentProj.name = this.textContent;
   } else if (this.id == 'currentProjDesc') {
     currentProj.description = this.textContent;
   }
-  console.log('editProject fired');
   updateProj();
 }
 
