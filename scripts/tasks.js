@@ -8,19 +8,22 @@ class Task extends ObjectHandler {
 }
 
 function createTask() {
-  let task = new Task(
-    document.getElementById('taskName').value,
-    false,
-    document.getElementById('taskNotes').value,
-    document.getElementById('taskPriority').value,
-  );
-  taskListArr.push(task);
-  updateLocalStorage();
-  updateItemList(task);
-  toggleForm(taskForm);
-  newTaskBtn.innerHTML = `<img src="assets/pencilwhite.svg">New Task`;
-  setCheckboxListeners();
-  setDeleteTaskListeners();
+  let taskValid = /.*\S.*/;
+  if (taskValid.test(document.getElementById('taskName').value) === true ) {
+    let task = new Task(
+      document.getElementById('taskName').value,
+      false,
+      document.getElementById('taskNotes').value,
+      document.getElementById('taskPriority').value,
+    );
+    taskListArr.push(task);
+    updateLocalStorage();
+    updateItemList(task);
+    toggleForm(taskForm);
+    newTaskBtn.innerHTML = `<img src="assets/pencilwhite.svg">New Task`;
+    setCheckboxListeners();
+    setDeleteTaskListeners();
+  } else alert('Please enter a name for the task');
 }
 
 function deleteTask() {
