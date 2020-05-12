@@ -289,7 +289,7 @@ ul {
   margin-right: auto;
 }
 
-#taskNameBlock {
+#taskNameBlock, #taskNotesBlock {
   width: 33%;
   margin-left: auto;
   margin-right: auto;
@@ -299,14 +299,8 @@ ul {
   border-radius: 5px;
 }
 
-#taskName {
+#taskName, #taskNotes {
   width: 100%;
-}
-
-#taskNotesBlock {
-  width: 33%;
-  margin-left: auto;
-  margin-right: auto;
 }
 
 #taskNotesBlock textarea {
@@ -314,10 +308,6 @@ ul {
   border-style: inset;
   border-width: 2px;
   height: 12px;
-}
-
-#taskNotes {
-  width: 100%;
 }
 
 #taskCreateBtn {
