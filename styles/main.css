@@ -84,10 +84,14 @@ ul {
   cursor: pointer;
 }
 
-.selected {
+li.selected {
   background-color: var(--primary-color);
   border-style: inset;
   border-width: 1px;
+}
+
+li.selected:hover {
+  background-color: var(--primary-color) !important;
 }
 
 #sideNav a {
