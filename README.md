@@ -43,7 +43,7 @@ Via command line:
 ```
 $ git clone https://github.com/HeyImMatt/taskli.git
 
-$ cd programming-language-suggester
+$ cd taskli
 
 $ code .
 
